@@ -1,4 +1,6 @@
-package com.v1nc3nz0.musimathics.storage.musicfiles.entity;
+package com.v1nc3nz0.musimathics.musicfiles.entity;
+
+import com.v1nc3nz0.musimathics.musicfiles.enums.Duration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

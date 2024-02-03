@@ -1,4 +1,4 @@
-package com.v1nc3nz0.musimathics.storage.musicfiles.io;
+package com.v1nc3nz0.musimathics.musicfiles.io;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

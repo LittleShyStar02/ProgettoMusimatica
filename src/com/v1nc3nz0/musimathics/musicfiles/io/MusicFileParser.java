@@ -1,11 +1,11 @@
-package com.v1nc3nz0.musimathics.storage.musicfiles.io;
+package com.v1nc3nz0.musimathics.musicfiles.io;
 
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
-import com.v1nc3nz0.musimathics.storage.musicfiles.entity.Duration;
-import com.v1nc3nz0.musimathics.storage.musicfiles.entity.Note;
-import com.v1nc3nz0.musimathics.storage.musicfiles.entity.Note.Alteration;
-import com.v1nc3nz0.musimathics.storage.musicfiles.entity.Note.Name;
-import com.v1nc3nz0.musimathics.storage.musicfiles.entity.Pause;
+import com.v1nc3nz0.musimathics.musicfiles.entity.Note;
+import com.v1nc3nz0.musimathics.musicfiles.entity.Pause;
+import com.v1nc3nz0.musimathics.musicfiles.enums.Alteration;
+import com.v1nc3nz0.musimathics.musicfiles.enums.Duration;
+import com.v1nc3nz0.musimathics.musicfiles.enums.NoteName;
 
 /*
  * Parser del file musicale
@@ -19,11 +19,11 @@ public class MusicFileParser
 	{
 		String[] values = note.split(";");
 		
-		Name name;
+		NoteName name;
 		Duration dur;
 		Alteration alt;
 		
-		name = Name.toName(values[0].toUpperCase());
+		name = NoteName.toName(values[0].toUpperCase());
 		dur = Duration.getDuration(values[1].toUpperCase());
 		if(values.length == 3) alt = Alteration.getAlteration(values[2]); 
 		else alt = Alteration.NONE;
@@ -45,7 +45,7 @@ public class MusicFileParser
 	 */
 	public String toString(Note note)
 	{
-		String name = note.getName().toString();
+		String name = note.getNoteName().toString();
 		String dur = note.getDuration().toString();
 		String alt;
 		
