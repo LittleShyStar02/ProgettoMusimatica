@@ -56,8 +56,8 @@
 		  <configuration>
 			  <archive>
 				  <manifest>
-					  <!-- <mainClass>com.v1nc3nz0.musimathics.Musimathics</mainClass> -->
-					  <mainClass>com.v1nc3nz0.musimathics.TestClass</mainClass>
+					  <mainClass>com.v1nc3nz0.musimathics.Musimathics</mainClass>
+					  <!-- <mainClass>com.v1nc3nz0.musimathics.TestClass</mainClass> -->
 				  </manifest>
 			  </archive>
 			  <descriptorRefs>

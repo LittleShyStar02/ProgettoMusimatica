@@ -1,0 +1,8 @@
+#
+#           SETTINGS
+#
+
+
+# Cartella dove si trovano i musicfiles
+# file con estensione .mf
+music-files-location: "musicfiles"

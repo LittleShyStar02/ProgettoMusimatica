@@ -1,0 +1,16 @@
+#
+#         MESSAGES
+#
+
+# Messaggio di scelta menù
+menu-choice:
+  - "Benvenuto utente in questo software musicale"
+  - ""
+  - "'a' - {operation_a}"
+  - "ESC - Esci dal programma"
+  - ""
+  - "Premi il tasto vicino le operazioni per eseguirle"
+
+
+# Operation messages
+operation-a-description: "Crea un file .mf"
