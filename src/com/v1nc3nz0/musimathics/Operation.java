@@ -8,7 +8,7 @@ public class Operation
 	 */
 	public static void mfCreation()
 	{
-		
+		System.out.println("Operazione 1");
 	}
 	
 	/*
@@ -17,7 +17,7 @@ public class Operation
 	 */
 	public static void mfReader()
 	{
-		
+		System.out.println("Operazione 2");
 	}
 
 }

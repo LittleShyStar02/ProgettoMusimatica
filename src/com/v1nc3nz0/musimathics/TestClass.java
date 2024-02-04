@@ -22,7 +22,7 @@ public class TestClass
 		
 		MusicFileEntityList entities = MusicFile.obtainEntities(file);
 		
-		String sound = "T240 " + entities.compose();
+		String sound = "T240 " + entities.compose()+"+A3q";
 		
 		player.play(sound);
 	}
