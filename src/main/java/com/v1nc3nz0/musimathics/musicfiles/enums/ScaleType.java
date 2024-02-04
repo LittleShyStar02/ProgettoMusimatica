@@ -7,4 +7,5 @@ package com.v1nc3nz0.musimathics.musicfiles.enums;
 public enum ScaleType
 {
 	MINOR,MAJOR;
+	
 }
