@@ -65,7 +65,7 @@ public class Musimathics
 	{
 		Musimathics software = new Musimathics();
 		software.run();
-		System.out.println(Musimathics.getInstance().getNative() == null);
+		
 	}
 
 }

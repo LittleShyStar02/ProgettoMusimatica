@@ -2,6 +2,10 @@ package com.v1nc3nz0.musimathics.io;
 
 import java.io.IOException;
 
+/*
+ * Interfaccia che definisce le azioni di input da console
+ * Quelle di output non servono avendo il System.out a disposizione
+ */
 public interface Console 
 {
 	

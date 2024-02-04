@@ -2,11 +2,9 @@ package com.v1nc3nz0.musimathics.musicfiles.io;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
 import com.v1nc3nz0.musimathics.musicfiles.entity.MusicFileEntity;
+import com.v1nc3nz0.musimathics.musicfiles.entity.MusicFileEntityList;
 
 /*
  * File musicale
@@ -37,11 +35,11 @@ public class MusicFile extends File
 	 * Ottieni tutte le entità del file
 	 * in modo da poterle riprodurre
 	 */
-	public static  List<MusicFileEntity> obtainEntities(MusicFile file) throws InvalidMusicFileException, InvalidNoteException, IOException
+	public static  MusicFileEntityList obtainEntities(MusicFile file) throws InvalidMusicFileException, InvalidNoteException, IOException
 	{
 		MusicFileReader reader = new MusicFileReader(new MusicReader(file));
 		MusicFileParser parser = new MusicFileParser();
-		List<MusicFileEntity> entities = new ArrayList<>();
+		MusicFileEntityList entities = new MusicFileEntityList();
 		MusicFileEntity entity;
 		String[] values;
 		String line = null;
