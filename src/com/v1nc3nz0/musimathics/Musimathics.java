@@ -2,7 +2,7 @@ package com.v1nc3nz0.musimathics;
 
 import java.io.IOException;
 import com.v1nc3nz0.musimathics.io.Console;
-import com.v1nc3nz0.musimathics.io.InputConsole;
+import com.v1nc3nz0.musimathics.io.ConsoleImpl;
 import com.v1nc3nz0.musimathics.io.NativeC;
 
 public class Musimathics 
@@ -15,7 +15,7 @@ public class Musimathics
 	
 	public Musimathics()
 	{
-		console = new InputConsole();
+		console = new ConsoleImpl();
 		nativec = new NativeC();
 		Musimathics.instance = this;
 	}

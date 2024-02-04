@@ -9,6 +9,7 @@ import java.io.IOException;
 public interface Console 
 {
 	
+	public void clear();
 	public byte readByte() throws NumberFormatException, IOException;
 	public char readChar() throws IOException;
 	public double readDouble() throws NumberFormatException, IOException ;

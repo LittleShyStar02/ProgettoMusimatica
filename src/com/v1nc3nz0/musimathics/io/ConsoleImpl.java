@@ -4,19 +4,27 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import com.v1nc3nz0.musimathics.Musimathics;
+
 /*
  * Classe di input associata all'interfaccia console
  */
-public class InputConsole implements Console
+public class ConsoleImpl implements Console
 {
 	
 	private BufferedReader reader;
 	
-	public InputConsole()
+	public ConsoleImpl()
 	{
 		reader = new BufferedReader(new InputStreamReader(System.in));
 	}
 
+	@Override
+	public void clear() 
+	{
+		Musimathics.getInstance().getNative().system("cls");
+	}
+	
 	@Override
 	public byte readByte() throws NumberFormatException, IOException
 	{
