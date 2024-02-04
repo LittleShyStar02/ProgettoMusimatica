@@ -12,7 +12,8 @@ public class TestClass
 	
 	public static void main(String[] args) throws InvalidNoteException, IOException
 	{
-		TestClass.functionTest();
+		//TestClass.functionTest();
+		System.out.println(TestClass.class.getProtectionDomain().getCodeSource().getLocation().getPath().toString());
 	}
 	
 	public static void functionTest() throws InvalidNoteException, IOException

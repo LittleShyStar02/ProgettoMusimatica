@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import com.v1nc3nz0.musimathics.Musimathics;
 
 /*
- * Classe di input associata all'interfaccia console
+ * Classe associata all'interfaccia console
  */
 public class ConsoleImpl implements Console
 {

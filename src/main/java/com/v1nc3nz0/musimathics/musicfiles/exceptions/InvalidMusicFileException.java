@@ -1,4 +1,4 @@
-package com.v1nc3nz0.musimathics.musicfiles.io;
+package com.v1nc3nz0.musimathics.musicfiles.exceptions;
 
 /*
  * Eccezione generata quando qualcosa non va

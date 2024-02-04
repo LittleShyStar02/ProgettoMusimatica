@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
 
+/*
+ * Lista di entità del file musicale
+ */
 @SuppressWarnings("serial")
 public class MusicFileEntityList extends ArrayList<MusicFileEntity>
 {

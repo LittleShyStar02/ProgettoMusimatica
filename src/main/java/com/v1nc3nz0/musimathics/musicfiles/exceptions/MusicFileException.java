@@ -1,4 +1,4 @@
-package com.v1nc3nz0.musimathics.musicfiles.io;
+package com.v1nc3nz0.musimathics.musicfiles.exceptions;
 
 import java.io.IOException;
 

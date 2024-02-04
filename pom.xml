@@ -41,6 +41,11 @@
 		<scope>provided</scope>
 	</dependency>
 	<!-- Simple YAML -->
+	<dependency>
+		<groupId>com.github.Carleslc.Simple-YAML</groupId>
+		<artifactId>Simple-Yaml</artifactId>
+		<version>1.8.4</version>
+    </dependency>
   </dependencies>
   
   <build>
@@ -51,7 +56,8 @@
 		  <configuration>
 			  <archive>
 				  <manifest>
-					  <mainClass>com.v1nc3nz0.musimathics.Musimathics</mainClass>
+					  <!-- <mainClass>com.v1nc3nz0.musimathics.Musimathics</mainClass> -->
+					  <mainClass>com.v1nc3nz0.musimathics.TestClass</mainClass>
 				  </manifest>
 			  </archive>
 			  <descriptorRefs>

@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
 import com.v1nc3nz0.musimathics.musicfiles.entity.MusicFileEntity;
 import com.v1nc3nz0.musimathics.musicfiles.entity.MusicFileEntityList;
+import com.v1nc3nz0.musimathics.musicfiles.exceptions.InvalidMusicFileException;
 
 /*
  * File musicale
