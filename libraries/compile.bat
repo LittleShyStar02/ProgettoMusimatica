@@ -1,0 +1,1 @@
+gcc -I"C:\Program Files\Java\jdk-17\include" -I"C:\Program Files\Java\jdk-17\include\win32" ProgettoMusimatica.c -shared -o ProgettoMusimatica.dll
