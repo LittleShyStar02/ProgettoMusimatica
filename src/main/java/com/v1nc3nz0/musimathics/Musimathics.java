@@ -68,7 +68,6 @@ public class Musimathics
 	private void initializeOperations()
 	{
 		operations.put('a', new a_Operation());
-		logger.logs(null);
 	}
 	
 	/*
@@ -179,6 +178,7 @@ public class Musimathics
 		Musimathics software = new Musimathics();
 		software.run();
 		software.getConsole().clear();
+		
 	}
 
 }
