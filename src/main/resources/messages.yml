@@ -1,8 +1,14 @@
-#
-#         MESSAGES
-#
+##################################################
+#                                                #
+#            Messages Configuration              #
+#                                                #
+##################################################
 
 # Messaggio di scelta menù
+#
+# Placeholders
+#
+# {operation_a} -> indica l'operazione eseguita quando si clicca 'a'
 menu-choice:
   - "Benvenuto utente in questo software musicale"
   - ""
@@ -12,5 +18,6 @@ menu-choice:
   - "Premi il tasto vicino le operazioni per eseguirle"
 
 
-# Operation messages
-operation-a-description: "Crea un file .mf"
+# Operations messages
+operations:
+  a-description: "Crea un file .mf"
