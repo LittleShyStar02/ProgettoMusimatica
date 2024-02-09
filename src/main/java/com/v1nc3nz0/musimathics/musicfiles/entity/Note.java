@@ -7,28 +7,30 @@ import com.v1nc3nz0.musimathics.musicfiles.enums.NoteIndex;
 import com.v1nc3nz0.musimathics.musicfiles.enums.NoteName;
 
 import lombok.Getter;
-import lombok.Setter;
 
 /*
  * Entità nota musicale
  */
 @Getter
-@Setter
 public class Note implements MusicFileEntity
 {
 	
 	// frequenza di start per il calcolo delle altre frequenze (A0)
 	private final static double START_FREQUENCE = 27.500;
 	
+	private Alteration alteration;
+	
+	private Duration duration;
+	
 	private NoteIndex index;
 	
 	private NoteName noteName;
 	
-	private Duration duration;
-	
-	private Alteration alteration;
-	
 	private int chromaticScale;
+	
+	private double frequence;
+	
+	private int semitone;
 	
 	public Note(NoteName noteName,Duration duration,Alteration alteration) throws InvalidNoteException
 	{
@@ -37,16 +39,15 @@ public class Note implements MusicFileEntity
 		this.alteration = alteration;
 		this.index = NoteIndex.getNoteIndex(noteName, alteration);
 		this.chromaticScale = Integer.parseInt(String.valueOf(noteName.name().toCharArray()[noteName.name().length()-1]));
+		calculate();
 	}
 	
 	/*
-	 * Ottieni la frequenza della nota
-	 * Non considera la scala della nota
+	 * Calcola i semitoni e la frequenza della nota
 	 */
-	public double getFrequence() throws InvalidNoteException
+	private void calculate() throws InvalidNoteException
 	{
-
-		int semitone = 0;
+		semitone = 0;
 		
 		if(noteName.name().endsWith("0"))
 		{
@@ -70,7 +71,28 @@ public class Note implements MusicFileEntity
 		
 		if(semitone < 0 || semitone > 88) throw new InvalidNoteException("La nota esce fuori dal range di rappresentazione");
 		
-		return Note.START_FREQUENCE * Math.pow(1.05946, semitone-1);
+		frequence = Note.START_FREQUENCE * Math.pow(1.05946, getSemitone()-1);
+	}
+	
+	@Override
+	public String obtain() 
+	{
+		return "m"+frequence+duration.toString();
+	}
+	
+
+	@Override
+	public String toString()
+	{
+		String str = "NOTE " + noteName.toString() + ";" + duration.toString();
+		
+		if(getAlteration() == Alteration.NONE)
+		{
+			return str;
+		}
+		
+		return str + ";" + alteration.toString();
+		
 	}
 	
 }

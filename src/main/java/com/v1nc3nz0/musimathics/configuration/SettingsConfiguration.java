@@ -5,6 +5,8 @@ import java.io.IOException;
 
 import org.simpleyaml.configuration.file.YamlFile;
 
+import com.v1nc3nz0.musimathics.Musimathics;
+
 import lombok.Getter;
 
 public class SettingsConfiguration implements Configuration
@@ -35,10 +37,12 @@ public class SettingsConfiguration implements Configuration
 			if(!file.exists()) ConfigManager.saveDefaults(null, fileName);
 			config = new YamlFile();
 			config.loadWithComments();
+			Musimathics.getInstance().getLogger().logs("Configurazione settings.yml caricata con successo");
 		} 
 		catch (IOException e) 
 		{
 			e.printStackTrace();
+			Musimathics.getInstance().getLogger().error(e.getMessage());
 		}
 	}
 

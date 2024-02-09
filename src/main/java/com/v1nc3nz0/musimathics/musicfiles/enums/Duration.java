@@ -10,6 +10,12 @@ public enum Duration
 	
 	W,H,Q,I,S,T,X,O;
 	
+	@Override
+	public String toString()
+	{
+		return name().toLowerCase();
+	}
+	
 	/*
 	 * Controlla se la durata è valida
 	 */

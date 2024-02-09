@@ -3,6 +3,7 @@ package com.v1nc3nz0.musimathics.musicfiles.io;
 import java.io.File;
 import java.io.IOException;
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
+import com.v1nc3nz0.musimathics.musicfiles.entity.Bar;
 import com.v1nc3nz0.musimathics.musicfiles.entity.MusicFileEntity;
 import com.v1nc3nz0.musimathics.musicfiles.entity.MusicFileEntityList;
 import com.v1nc3nz0.musimathics.musicfiles.exceptions.InvalidMusicFileException;
@@ -50,8 +51,12 @@ public class MusicFile extends File
 			values = line.split("\\s");
 			switch(values[0])
 			{
+				case "BAR":
+					entity = new Bar();
+					break;
 				case "NOTE":
-					entity = parser.toNote(values[1]);
+					if(values.length == 2) entity = parser.toNote(values[1]);
+					else entity = parser.toNoteList(line.replaceFirst("NOTE ",""));
 					break;
 				case "PAUSE":
 					entity = parser.toPause(values[1]);

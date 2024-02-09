@@ -33,12 +33,13 @@ public class Musimathics
 	private SettingsConfiguration settings; // settings configuration
 	private MessagesConfiguration messages; // messages configuration
 	
-	private Logger logger;
+	private Logger logger; // classe del logger
 	private NativeC nativec; // classe delle operazioni native c
 	private Console console; // classe delle operazioni su console
 	
 	public Musimathics()
 	{
+		logger = new Logger();
 		initialize();
 		initializeOperations();
 	}
@@ -48,18 +49,23 @@ public class Musimathics
 	 */
 	private void initialize()
 	{
+		getLogger().logs("Inizializzazione dei dati");
 		Musimathics.instance = this;
 		operations = new HashMap<>();
-		logger = new Logger();
 		
 		settings = new SettingsConfiguration();
 		messages = new MessagesConfiguration();
 		
 		musicFileLocation = new File(settings.getMusicFileLocation());
-		if(!musicFileLocation.exists()) musicFileLocation.mkdir();
+		if(!musicFileLocation.exists()) 
+		{
+			musicFileLocation.mkdir();
+			logger.logs("Cartella dei file musicali non trovata. L'abbiamo creata noi per te!");
+		}
 		
 		nativec = new NativeC();
 		console = new ConsoleImpl();
+		getLogger().logs("Inizializzazione dati completata con successo");
 	}
 	
 	/*
@@ -67,7 +73,9 @@ public class Musimathics
 	 */
 	private void initializeOperations()
 	{
+		getLogger().logs("Inizializzazione operazioni menù scelta");
 		operations.put('a', new a_Operation());
+		getLogger().logs("Operazioni del menù di selezione inizializzate con successo");
 	}
 	
 	/*
@@ -131,15 +139,16 @@ public class Musimathics
 	 */
 	private void menuChoice()
 	{
-		List<String> list = messages.getListMessage(Messages.MENU_CHOICE);
+		List<String> list = getMessages().getListMessage(Messages.MENU_CHOICE);
 		for(String str : list)
 		{
 			for(Character ch : operations.keySet())
 			{
 				if(str.contains("{operation_"+String.valueOf(ch)+"}")) 
 					str = Placeholder.replace(MenuChoice.OPERATION_A.toString(), 
-							messages.getMessage(Messages.OPERATIONS__A_DESCRIPTION), str);
+							getMessages().getMessage(Messages.OPERATIONS__A_DESCRIPTION), str);
 			}
+			System.out.println(str);
 		}
 	}
 	
@@ -148,26 +157,30 @@ public class Musimathics
 	 */
 	private void run() throws NumberFormatException, IOException 
 	{
+		getLogger().logs("Inizio esecuzione software");
 		Operation op;
 		char selection;
 		int choice;
 		
 		do
 		{
-			console.clear();
+			getConsole().clear();
 			menuChoice();
-			choice = nativec.getch();
+			choice = getNative().getch();
 			if(choice != Musimathics.EXIT_CODE)
 			{
 				selection = (char) choice;
 				if(operations.containsKey(selection))
 				{
 					op = operations.get(selection);
+					getLogger().logs("Inizio esecuzione operazione " + selection);
 					op.run();
+					getLogger().logs("Termine esecuzione operazione " + selection);
 				}
 			}
 		}
 		while(choice != Musimathics.EXIT_CODE);
+		getLogger().logs("Termine esecuzione software");
 	}
 	
 	/*
@@ -176,9 +189,11 @@ public class Musimathics
 	public static void main(String[] args) throws NumberFormatException, IOException
 	{
 		Musimathics software = new Musimathics();
+		software.getLogger().logs("Software avviato correttamente");
 		software.run();
+		software.getLogger().logs("Software fermato correttamente");
+		software.getLogger().finalize();
 		software.getConsole().clear();
-		
 	}
 
 }

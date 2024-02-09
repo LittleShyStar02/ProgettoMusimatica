@@ -2,6 +2,7 @@ package com.v1nc3nz0.musimathics.musicfiles.io;
 
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
 import com.v1nc3nz0.musimathics.musicfiles.entity.Note;
+import com.v1nc3nz0.musimathics.musicfiles.entity.NoteList;
 import com.v1nc3nz0.musimathics.musicfiles.entity.Pause;
 import com.v1nc3nz0.musimathics.musicfiles.enums.Alteration;
 import com.v1nc3nz0.musimathics.musicfiles.enums.Duration;
@@ -32,42 +33,28 @@ public class MusicFileParser
 	}
 	
 	/*
+	 * Ottiene la nota da una stringa
+	 */
+	public NoteList toNoteList(String notelist) throws InvalidNoteException
+	{
+		String[] notes = notelist.split("\\s");
+		NoteList list = new NoteList();
+		
+		for(String note : notes)
+		{
+			list.add(toNote(note));
+		}
+		
+		return list;
+	}
+	
+	/*
 	 * Ottiene la pausa da una stringa
 	 */
 	public Pause toPause(String pause) throws InvalidNoteException
 	{
 		Duration dur = Duration.getDuration(pause.toUpperCase());
 		return new Pause(dur);
-	}
-	
-	/*
-	 * Converte la nota in stringa
-	 */
-	public String toString(Note note)
-	{
-		String name = note.getNoteName().toString();
-		String dur = note.getDuration().toString();
-		String alt;
-		
-		String str = "NOTE " + name + ";" + dur.toLowerCase();
-		
-		if(note.getAlteration() == Alteration.NONE)
-		{
-			return str;
-		}
-		
-		alt = note.getAlteration().toString();
-		return str + ";" + alt;
-		
-	}
-	
-	/*
-	 * Converte la pausa in stringa
-	 */
-	public String toString(Pause pause)
-	{
-		String dur = pause.getDuration().toString();
-		return "PAUSE " + dur.toLowerCase();
-	}
+	}	
 
 }

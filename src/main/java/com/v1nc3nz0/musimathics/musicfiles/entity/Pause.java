@@ -36,4 +36,10 @@ public class Pause implements MusicFileEntity
 		return null;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return "PAUSE " + duration.toString().toLowerCase();
+	}
+	
 }

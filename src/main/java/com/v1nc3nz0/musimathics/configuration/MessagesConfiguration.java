@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.simpleyaml.configuration.file.YamlFile;
 
+import com.v1nc3nz0.musimathics.Musimathics;
 import com.v1nc3nz0.musimathics.configuration.enums.Messages;
 
 import lombok.Getter;
@@ -33,10 +34,12 @@ public class MessagesConfiguration implements Configuration
 			if(!file.exists()) ConfigManager.saveDefaults(null, fileName);
 			config = new YamlFile();
 			config.loadWithComments();
+			Musimathics.getInstance().getLogger().logs("Configurazione messages.yml caricata con successo");
 		} 
 		catch (IOException e) 
 		{
 			e.printStackTrace();
+			Musimathics.getInstance().getLogger().error(e.getMessage());
 		}
 	}
 	
