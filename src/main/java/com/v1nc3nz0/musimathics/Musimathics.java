@@ -13,7 +13,7 @@ import com.v1nc3nz0.musimathics.io.ConsoleImpl;
 import com.v1nc3nz0.musimathics.io.NativeC;
 import com.v1nc3nz0.musimathics.logger.Logger;
 import com.v1nc3nz0.musimathics.menuselection.Operation;
-import com.v1nc3nz0.musimathics.menuselection.a_Operation;
+import com.v1nc3nz0.musimathics.menuselection.OperationA;
 import com.v1nc3nz0.musimathics.placeholders.Placeholder;
 import com.v1nc3nz0.musimathics.placeholders.enums.MenuChoice;
 
@@ -29,6 +29,7 @@ public class Musimathics
 	
 	private Map<Character, Operation> operations; // mappa delle associazioni delle operazioni
 	private File musicFileLocation; // cartella dei file musicali
+	private File mfSettingsLocation; // cartella delle impostazioni dei file musicali
 	
 	private SettingsConfiguration settings; // settings configuration
 	private MessagesConfiguration messages; // messages configuration
@@ -63,6 +64,13 @@ public class Musimathics
 			logger.logs("Cartella dei file musicali non trovata. L'abbiamo creata noi per te!");
 		}
 		
+		mfSettingsLocation = new File(settings.getMFSettingsLocation());
+		if(!mfSettingsLocation.exists())
+		{
+			mfSettingsLocation.mkdir();
+			logger.logs("Cartella delle impostazioni dei file musicali non trovata. L'abbiamo creata noi per te!");
+		}
+		
 		nativec = new NativeC();
 		console = new ConsoleImpl();
 		getLogger().logs("Inizializzazione dati completata con successo");
@@ -74,7 +82,7 @@ public class Musimathics
 	private void initializeOperations()
 	{
 		getLogger().logs("Inizializzazione operazioni menù scelta");
-		operations.put('a', new a_Operation());
+		operations.put('a', new OperationA());
 		getLogger().logs("Operazioni del menù di selezione inizializzate con successo");
 	}
 	

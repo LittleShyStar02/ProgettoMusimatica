@@ -9,6 +9,10 @@ public class Bar implements MusicFileEntity
 		return "|";
 	}
 	
-	
+	@Override
+	public String toString()
+	{
+		return "BAR";
+	}
 
 }

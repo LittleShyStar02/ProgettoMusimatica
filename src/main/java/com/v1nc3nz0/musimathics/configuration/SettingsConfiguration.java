@@ -23,6 +23,11 @@ public class SettingsConfiguration implements Configuration
 		load();
 	}
 	
+	public String getMFSettingsLocation()
+	{
+		return config.getString("music-files-settings-location");
+	}
+	
 	public String getMusicFileLocation()
 	{
 		return config.getString("music-files-location");

@@ -7,45 +7,39 @@ import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
  */
 public enum Alteration
 {
-	DOUBLE_FLAT,DOUBLE_NATURAL,DOUBLE_SHARP,FLAT, NATURAL,NONE,SHARP;
+	DOUBLE_FLAT("bb"),
+	DOUBLE_NATURAL("BB"),
+	DOUBLE_SHARP("##"),
+	FLAT("b"), 
+	NATURAL("B"),
+	NONE("NONE"),
+	SHARP("#");
+	
+	private String value;
+	
+	Alteration(String value)
+	{
+		this.value = value;
+	}
 	
 	/*
 	 * Ottieni l'alterazione dalla stringa
 	 */
-	public static Alteration getAlteration(String alt) throws InvalidNoteException
+	public static Alteration getAlteration(String value) throws InvalidNoteException
 	{
-		switch(alt)
+		
+		for(Alteration alt : Alteration.values())
 		{
-			case "bb":
-				return Alteration.DOUBLE_FLAT;
-			case "nn":
-				return Alteration.DOUBLE_NATURAL;
-			case "##":
-				return Alteration.DOUBLE_SHARP;
-			case "b":
-				return Alteration.FLAT;
-			case "n":
-				return Alteration.NATURAL;
-			case "#":
-				return Alteration.SHARP;
-			default:
-				throw new InvalidNoteException(alt + " non è un alterazione valida");
+			if(alt.obtain().equals(value)) return alt;
 		}
+		throw new InvalidNoteException(value + " non è un alterazione valida");
 	}
 	
 	/*
 	 * Ottieni il valore dell'alterazione sotto forma di stringa
 	 */
-	@Override
-	public String toString()
+	public String obtain()
 	{
-		Alteration alt = Alteration.valueOf(name());
-		if(alt.equals(Alteration.DOUBLE_FLAT)) return "bb";
-		if(alt.equals(Alteration.DOUBLE_NATURAL)) return "BB";
-		if(alt.equals(Alteration.DOUBLE_SHARP)) return "##";
-		if(alt.equals(Alteration.FLAT)) return "b";
-		if(alt.equals(Alteration.NATURAL)) return "B";
-		if(alt.equals(Alteration.SHARP)) return "#";
-		return null;
+		return value;
 	}
 }

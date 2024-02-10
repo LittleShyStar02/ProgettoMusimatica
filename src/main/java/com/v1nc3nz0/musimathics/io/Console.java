@@ -10,6 +10,7 @@ public interface Console
 {
 	
 	public void clear();
+	public void pause();
 	public byte readByte() throws NumberFormatException, IOException;
 	public char readChar() throws IOException;
 	public double readDouble() throws NumberFormatException, IOException ;

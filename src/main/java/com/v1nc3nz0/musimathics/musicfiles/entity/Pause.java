@@ -23,6 +23,7 @@ public class Pause implements MusicFileEntity
 	 * Ottieni il giusto valore della pausa
 	 * basato sulla durata
 	 */
+	@Override
 	public String obtain()
 	{
 		if(duration == Duration.W) return "R1";

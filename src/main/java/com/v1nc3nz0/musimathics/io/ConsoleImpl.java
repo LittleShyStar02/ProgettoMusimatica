@@ -25,6 +25,11 @@ public class ConsoleImpl implements Console
 		Musimathics.getInstance().getNative().system("cls");
 	}
 	
+	public void pause()
+	{
+		Musimathics.getInstance().getNative().system("pause");
+	}
+	
 	@Override
 	public byte readByte() throws NumberFormatException, IOException
 	{

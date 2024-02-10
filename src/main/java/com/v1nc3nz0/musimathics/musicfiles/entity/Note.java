@@ -32,13 +32,18 @@ public class Note implements MusicFileEntity
 	
 	private int semitone;
 	
+	public Note(int semitone)
+	{
+		this.semitone = semitone;
+	}
+	
 	public Note(NoteName noteName,Duration duration,Alteration alteration) throws InvalidNoteException
 	{
 		this.noteName = noteName;
 		this.duration = duration;
 		this.alteration = alteration;
 		this.index = NoteIndex.getNoteIndex(noteName, alteration);
-		this.chromaticScale = Integer.parseInt(String.valueOf(noteName.name().toCharArray()[noteName.name().length()-1]));
+		this.chromaticScale = Integer.parseInt(String.valueOf(noteName.name().charAt(noteName.name().length()-1)));
 		calculate();
 	}
 	
@@ -71,7 +76,12 @@ public class Note implements MusicFileEntity
 		
 		if(semitone < 0 || semitone > 88) throw new InvalidNoteException("La nota esce fuori dal range di rappresentazione");
 		
-		frequence = Note.START_FREQUENCE * Math.pow(1.05946, getSemitone()-1);
+		/*
+		 * Sommiamo 12 per aggiustare il suono
+		 * La libreria JFugue considera il DO centrale (DO4)
+		 * come DO5, quindi A0 come A1
+		 */
+		frequence = Note.START_FREQUENCE * Math.pow(1.05946, getSemitone()+12-1);
 	}
 	
 	@Override

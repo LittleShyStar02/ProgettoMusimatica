@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Date;
+import java.time.LocalTime;
 
 import lombok.Getter;
 
@@ -27,7 +27,8 @@ public class Logger
 	public void append(String message)
 	{
 		try {
-			writer.append("[" + new Date().toString() + "] " + message);
+			LocalTime date = LocalTime.now();
+			writer.append("[" + date.getHour() + ":" + date.getMinute() + ":" + date.getSecond() + "] " + message);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

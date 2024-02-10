@@ -6,11 +6,11 @@ import java.util.ArrayList;
 public class NoteList extends ArrayList<Note> implements MusicFileEntity
 {
 	
+	@Override
 	public String obtain()
 	{
-		if(isEmpty()) return null;
-		
 		String str = "";
+		if(isEmpty()) return str;
 		
 		for(Note note : this)
 		{

@@ -3,6 +3,10 @@
 #
 
 
-# Cartella dove si trovano i musicfiles
-# file con estensione .mf
+# Cartella dove si trovano i musicfiles.
+# File con estensione .mf
 music-files-location: "musicfiles"
+
+# Cartella dove si trovano i file di impostazioni
+# musicfiles. File con estensione .mfs
+music-files-location: "musicfilessettings"
