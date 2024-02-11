@@ -2,6 +2,8 @@ package com.v1nc3nz0.musimathics.musicfiles.io;
 
 import java.io.File;
 import java.io.IOException;
+
+import com.v1nc3nz0.musimathics.enums.Scale;
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
 import com.v1nc3nz0.musimathics.musicfiles.entity.Bar;
 import com.v1nc3nz0.musimathics.musicfiles.entity.MusicFileEntity;
@@ -37,7 +39,7 @@ public class MusicFile extends File
 	 * Ottieni tutte le entità del file
 	 * in modo da poterle riprodurre
 	 */
-	public static  MusicFileEntityList obtainEntities(MusicFile file) throws InvalidMusicFileException, InvalidNoteException, IOException
+	public static  MusicFileEntityList obtainEntities(MusicFile file, Scale scale) throws InvalidMusicFileException, InvalidNoteException, IOException
 	{
 		MusicFileReader reader = new MusicFileReader(new MusicReader(file));
 		MusicFileParser parser = new MusicFileParser();
@@ -55,8 +57,8 @@ public class MusicFile extends File
 					entity = new Bar();
 					break;
 				case "NOTE":
-					if(values.length == 2) entity = parser.toNote(values[1]);
-					else entity = parser.toNoteList(line.replaceFirst("NOTE ",""));
+					if(values.length == 2) entity = parser.toNote(values[1],scale);
+					else entity = parser.toNoteList(line.replaceFirst("NOTE ",""),scale);
 					break;
 				case "PAUSE":
 					entity = parser.toPause(values[1]);

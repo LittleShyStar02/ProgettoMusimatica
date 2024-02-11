@@ -1,13 +1,11 @@
 package com.v1nc3nz0.musimathics.configuration.enums;
 
-/*
- * Variabili dei messaggi
- */
-public enum Messages 
+public enum MFSettings 
 {
-
-	MENU_CHOICE,
-	OPERATIONS__A_DESCRIPTION;
+	
+	MUSIC_BPM,
+	MUSIC_SCALE__NOTE,
+	MUSIC_SCALE__ALTERATION;
 	
 	@Override
 	public String toString()
@@ -17,5 +15,5 @@ public enum Messages
 		if(name.contains("_")) name = name.replace("_", "-");
 		return name;
 	}
-	
+
 }

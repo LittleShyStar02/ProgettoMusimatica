@@ -33,6 +33,12 @@
     	<artifactId>jfugue</artifactId>
     	<version>5.0.9</version>
 	  </dependency>
+	  <!-- JMusic -->
+	  <dependency>
+		<groupId>com.explodingart</groupId>
+		<artifactId>jmusic</artifactId>
+		<version>1.6.4</version>
+	  </dependency>
 	  <!-- Lombok -->
 	  <dependency>
 		<groupId>org.projectlombok</groupId>

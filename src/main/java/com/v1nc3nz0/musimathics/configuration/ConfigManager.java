@@ -11,9 +11,15 @@ import java.util.zip.ZipFile;
 
 import com.v1nc3nz0.musimathics.Musimathics;
 
+/*
+ * Manager dei file
+ */
 public class ConfigManager 
 {
 	
+	/*
+	 * Permette di estrarre un file dal jar
+	 */
 	public static void saveDefaults(File folder,String name)
 	{
 		try {

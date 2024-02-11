@@ -8,12 +8,22 @@ import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
 public enum Duration
 {
 	
-	W,H,Q,I,S,T,X,O;
+	W(4.0),H(2.0),Q(1.0),I(0.5),S(0.25),T(0.125),X(0.0625),O(0.03125);
 	
-	@Override
-	public String toString()
+	private double jmusic_value;
+	
+	Duration(double jmusic_value)
 	{
-		return name().toLowerCase();
+		this.jmusic_value = jmusic_value;
+	}
+	
+	/*
+	 * Ottiene la durata da una stringa
+	 */
+	public static Duration getDuration(String dur) throws InvalidNoteException
+	{
+		if(!isValid(dur)) throw new InvalidNoteException(dur + " non è una durata valida");
+		return Duration.valueOf(dur);
 	}
 	
 	/*
@@ -34,12 +44,19 @@ public enum Duration
 	}
 	
 	/*
-	 * Ottiene la durata da una stringa
+	 * Ottieni la durata
 	 */
-	public static Duration getDuration(String dur) throws InvalidNoteException
+	public String obtain()
 	{
-		if(!isValid(dur)) throw new InvalidNoteException(dur + " non è una durata valida");
-		return Duration.valueOf(dur);
+		return name().toLowerCase();
+	}
+	
+	/*
+	 * Ottieni la durata secondo lo standardid di jmusic
+	 */
+	public double obtainMusic()
+	{
+		return jmusic_value;
 	}
 
 }

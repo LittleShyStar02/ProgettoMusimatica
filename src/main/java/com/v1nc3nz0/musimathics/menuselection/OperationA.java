@@ -8,10 +8,7 @@ public class OperationA implements Operation
 	@Override
 	public void run() 
 	{
-		
-		Musimathics.getInstance().getConsole().clear();
-		
-		
+		Musimathics.getInstance().getConsole().clear();	
 	}
 
 }

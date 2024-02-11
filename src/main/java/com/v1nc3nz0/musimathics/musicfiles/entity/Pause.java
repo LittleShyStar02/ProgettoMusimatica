@@ -20,27 +20,23 @@ public class Pause implements MusicFileEntity
 	private Duration duration;
 	
 	/*
-	 * Ottieni il giusto valore della pausa
-	 * basato sulla durata
+	 * Ottieni il valore della pausa
 	 */
 	@Override
 	public String obtain()
 	{
-		if(duration == Duration.W) return "R1";
-		if(duration == Duration.H) return "R0.5";
-		if(duration == Duration.Q) return "R0.25";
-		if(duration == Duration.I) return "R0.125";
-		if(duration == Duration.S) return "R0.0625";
-		if(duration == Duration.T) return "R0.03125";
-		if(duration == Duration.X) return "R0.015625";
-		if(duration == Duration.O) return "R0.0078125";
-		return null;
+		return "R"+getDuration().obtain();
 	}
 	
+	/*
+	 * Ottieni la pausa così
+	 * come scritta originariamente
+	 * nel file musicale
+	 */
 	@Override
 	public String toString()
 	{
-		return "PAUSE " + duration.toString().toLowerCase();
+		return "PAUSE " + getDuration().name().toLowerCase();
 	}
 	
 }

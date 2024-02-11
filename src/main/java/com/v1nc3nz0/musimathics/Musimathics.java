@@ -9,7 +9,6 @@ import com.v1nc3nz0.musimathics.configuration.MessagesConfiguration;
 import com.v1nc3nz0.musimathics.configuration.SettingsConfiguration;
 import com.v1nc3nz0.musimathics.configuration.enums.Messages;
 import com.v1nc3nz0.musimathics.io.Console;
-import com.v1nc3nz0.musimathics.io.ConsoleImpl;
 import com.v1nc3nz0.musimathics.io.NativeC;
 import com.v1nc3nz0.musimathics.logger.Logger;
 import com.v1nc3nz0.musimathics.menuselection.Operation;
@@ -72,7 +71,7 @@ public class Musimathics
 		}
 		
 		nativec = new NativeC();
-		console = new ConsoleImpl();
+		console = new Console();
 		getLogger().logs("Inizializzazione dati completata con successo");
 	}
 	

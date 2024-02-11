@@ -1,5 +1,8 @@
 package com.v1nc3nz0.musimathics.placeholders.enums;
 
+/*
+ * Variabili del menù di scelta
+ */
 public enum MenuChoice 
 {
 	

@@ -11,13 +11,16 @@ import com.v1nc3nz0.musimathics.configuration.enums.Messages;
 
 import lombok.Getter;
 
+/*
+ * Configuration dei messaggi
+ */
 public class MessagesConfiguration implements Configuration
 {
 	
 	private YamlFile config; // file contenente i messaggi
 	
 	@Getter
-	private String fileName;
+	private String fileName; // noem del file dei messaggi
 	
 	public MessagesConfiguration()
 	{
@@ -43,11 +46,18 @@ public class MessagesConfiguration implements Configuration
 		}
 	}
 	
+	/*
+	 * Ti permette di ottenere il messaggio dal path
+	 */
 	public String getMessage(Messages path)
 	{
 		return config.getString(path.toString());
 	}
 	
+	/*
+	 * Ti permette di ottenere un messaggio
+	 * scritto su più righe
+	 */
 	public List<String> getListMessage(Messages path)
 	{
 		return config.getStringList(path.toString());

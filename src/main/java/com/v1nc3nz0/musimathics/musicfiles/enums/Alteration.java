@@ -8,10 +8,10 @@ import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
 public enum Alteration
 {
 	DOUBLE_FLAT("bb"),
-	DOUBLE_NATURAL("BB"),
+	DOUBLE_NATURAL("nn"),
 	DOUBLE_SHARP("##"),
 	FLAT("b"), 
-	NATURAL("B"),
+	NATURAL("n"),
 	NONE("NONE"),
 	SHARP("#");
 	

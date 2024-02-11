@@ -6,5 +6,8 @@ package com.v1nc3nz0.musimathics.menuselection;
  */
 public interface Operation 
 {
+	/*
+	 * Esegue le istruzioni dell'operazione
+	 */
 	public void run();
 }

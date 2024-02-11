@@ -6,6 +6,9 @@ import java.util.ArrayList;
 public class NoteList extends ArrayList<Note> implements MusicFileEntity
 {
 	
+	/*
+	 * Ottiene la stringa di note multiple 
+	 */
 	@Override
 	public String obtain()
 	{
@@ -22,6 +25,10 @@ public class NoteList extends ArrayList<Note> implements MusicFileEntity
 		return str;
 	}
 	
+	/*
+	 * Ottiene la stringa originale così come
+	 * scritta nel file mf
+	 */
 	@Override
 	public String toString()
 	{
