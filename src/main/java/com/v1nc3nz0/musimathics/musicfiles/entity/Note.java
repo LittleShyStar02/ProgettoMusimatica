@@ -144,6 +144,21 @@ public class Note implements MusicFileEntity
 	}
 	
 	/*
+	 * Ottieni la stringa in versione italiana
+	 */
+	public String itaString()
+	{
+		String str = "NOTE " + getNoteName().getItalianName() + ";" + getDuration().toString();
+		
+		if(getAlteration() == Alteration.NONE)
+		{
+			return str;
+		}
+		
+		return str + ";" + getAlteration().obtain();
+	}
+	
+	/*
 	 * Ottiene la stringa della frequenza
 	 * per suonarla con JFugue
 	 */
@@ -191,7 +206,7 @@ public class Note implements MusicFileEntity
 			return str;
 		}
 		
-		return str + ";" + getAlteration().toString();
+		return str + ";" + getAlteration().obtain();
 		
 	}
 	

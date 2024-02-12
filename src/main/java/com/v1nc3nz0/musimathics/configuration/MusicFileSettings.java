@@ -80,9 +80,9 @@ public class MusicFileSettings
 			
 			config = new YamlFile(file);
 			config.loadWithComments();
-			//Musimathics.getInstance().getLogger().append("File " + file.getPath().toString() + " caricato con successo");
+			Musimathics.getInstance().getLogger().append("File " + file.getPath().toString() + " caricato con successo");
 		} catch (IOException e) {
-			//Musimathics.getInstance().getLogger().error("Errore durante il caricamento del file " + file.getPath().toString());
+			Musimathics.getInstance().getLogger().error("Errore durante il caricamento del file " + file.getPath().toString());
 		}
 	}
 	

@@ -2,7 +2,9 @@ package com.v1nc3nz0.musimathics.musicfiles.entity;
 
 import java.util.ArrayList;
 
+import com.v1nc3nz0.musimathics.entity.Scale;
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
+import com.v1nc3nz0.musimathics.exceptions.MusicException;
 
 import jm.music.data.CPhrase;
 import jm.music.data.Part;
@@ -113,5 +115,38 @@ public class MusicFileEntityList extends ArrayList<MusicFileEntity>
 		
 		return part;
 		
+	}
+
+	/*
+	 * Porta un brano da una scala a un altra
+	 */
+	public MusicFileEntityList traspose(Scale oldScale, Scale newScale) throws MusicException 
+	{
+		if(oldScale.getScaleType() != newScale.getScaleType())
+			throw new MusicException("Per trasppore un brano le scale devono avere la stessa tonalità");
+		
+		MusicFileEntityList ents = new MusicFileEntityList();
+		
+		try
+		{
+			Note note;
+			Note current;
+			for(MusicFileEntity ent : this)
+			{
+				if(ent instanceof Note)
+				{
+					current = (Note) ent;
+					int difference = newScale.getNote().getIndex().scaleIndex() - oldScale.getNote().getIndex().scaleIndex();;
+					note = new Note(current.getSemitone()+difference,newScale.getScaleType().alt(),current.getDuration());
+					ents.add(note);
+				}
+				else ents.add(ent);
+			}
+		}catch(InvalidNoteException e)
+		{
+			// errore qui
+		}
+		
+		return ents;
 	}
 }

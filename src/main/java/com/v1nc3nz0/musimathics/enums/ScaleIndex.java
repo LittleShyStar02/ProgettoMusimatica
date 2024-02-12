@@ -8,7 +8,7 @@ import com.v1nc3nz0.musimathics.musicfiles.enums.NoteName;
  */
 public enum ScaleIndex
 {
-	C(1,1),D(2,3),E(3,5),F(4,6),G(5,8),A(6,10),B(7,12);
+	C(0,1),D(1,3),E(2,5),F(3,6),G(4,8),A(5,10),B(6,12);
 	
 	private int arrayIndex;
 	private int scaleIndex;

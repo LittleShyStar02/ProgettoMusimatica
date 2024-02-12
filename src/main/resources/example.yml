@@ -12,7 +12,7 @@ music-bpm: 120
 #
 # Note: C, D, E, F, G, A, B
 # Alteration NONE (naturale), #, b
-# Type: MAJ (major) ,MIN (minor)
+# Type: MAJ (major) ,MIN (minor), MIN_A (minor armonic), MIN_M (minor melodic)
 #
 music-scale:
   note: C

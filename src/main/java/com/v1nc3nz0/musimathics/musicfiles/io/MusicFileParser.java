@@ -1,6 +1,7 @@
 package com.v1nc3nz0.musimathics.musicfiles.io;
 
 import com.v1nc3nz0.musimathics.entity.Scale;
+import com.v1nc3nz0.musimathics.enums.ScaleIndex;
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
 import com.v1nc3nz0.musimathics.musicfiles.entity.Note;
 import com.v1nc3nz0.musimathics.musicfiles.entity.NoteList;
@@ -21,28 +22,37 @@ public class MusicFileParser
 	{
 		String[] values = note.split(";");
 		
-		NoteName name;
+		NoteName name,newname;
 		Duration dur;
-		Alteration alt;
+		Alteration altscale,altnote;
+		ScaleIndex index;
 		
 		name = NoteName.toName(values[0].toUpperCase());
+		index = ScaleIndex.getIndex(name);
+		newname = scale.getNoteName(index);
+		if(name != newname) 
+		{
+			name = NoteName.valueOf(String.valueOf(newname.name().charAt(0))
+					+String.valueOf(name.name().charAt(name.name().length()-1)));
+		}
+		
 		dur = Duration.getDuration(values[1].toUpperCase());
-		alt = scale.getAlteration(name);
+		altscale = scale.getAlteration(index);
 		
 		if(values.length == 3) 
 		{
-			Alteration tmp = Alteration.getAlteration(values[2]); 
-			if(tmp == Alteration.NATURAL && alt != Alteration.NONE)
+			altnote = Alteration.getAlteration(values[2]);
+			if(altnote == Alteration.NATURAL && altscale != Alteration.NONE)
 			{
-				alt = Alteration.NONE;
+				altscale = Alteration.NONE;
 			}
 			else
 			{
-				alt = tmp;
+				altscale = altnote;
 			}
 		}
 		
-		return new Note(name,dur,alt);
+		return new Note(name,dur,altscale);
 	}
 	
 	/*

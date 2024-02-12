@@ -17,4 +17,4 @@ music-bpm: 120
 music-scale:
   note: C
   alteration: NONE
-  type: MIN
+  type: MAJ
