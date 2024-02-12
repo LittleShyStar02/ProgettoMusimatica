@@ -1,8 +1,10 @@
-package com.v1nc3nz0.musimathics.enums;
+package com.v1nc3nz0.musimathics.entity;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import com.v1nc3nz0.musimathics.enums.ScaleIndex;
+import com.v1nc3nz0.musimathics.enums.ScaleType;
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
 import com.v1nc3nz0.musimathics.musicfiles.entity.Note;
 import com.v1nc3nz0.musimathics.musicfiles.enums.Alteration;
@@ -20,7 +22,6 @@ public class Scale
 		
 		try {
 			map.put(note.getIndex(), note.getAlteration());
-			System.out.println(note.getIndex() + " " +  note.getAlteration());
 			ScaleIndex[] indexes = ScaleIndex.values();
 			
 			for(int y = 0,x = note.getIndex().arrayIndex(); x <= values.length;x++,y++)
@@ -28,7 +29,6 @@ public class Scale
 				int mod = x%indexes.length;
 				if(map.containsKey(indexes[mod])) continue;
 				note = new Note(note.getSemitone()+values[y],type.alt(),note.getDuration());
-				System.out.println(note.getIndex().name() + " " + note.getAlteration().name());
 				map.put(indexes[mod], note.getAlteration());
 			}
 		} catch (InvalidNoteException e) {

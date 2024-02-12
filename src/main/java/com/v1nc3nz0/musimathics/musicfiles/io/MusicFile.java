@@ -3,7 +3,7 @@ package com.v1nc3nz0.musimathics.musicfiles.io;
 import java.io.File;
 import java.io.IOException;
 
-import com.v1nc3nz0.musimathics.enums.Scale;
+import com.v1nc3nz0.musimathics.entity.Scale;
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
 import com.v1nc3nz0.musimathics.musicfiles.entity.Bar;
 import com.v1nc3nz0.musimathics.musicfiles.entity.MusicFileEntity;

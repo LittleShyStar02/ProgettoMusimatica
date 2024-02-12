@@ -1,6 +1,6 @@
 package com.v1nc3nz0.musimathics.musicfiles.io;
 
-import com.v1nc3nz0.musimathics.enums.Scale;
+import com.v1nc3nz0.musimathics.entity.Scale;
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
 import com.v1nc3nz0.musimathics.musicfiles.entity.Note;
 import com.v1nc3nz0.musimathics.musicfiles.entity.NoteList;

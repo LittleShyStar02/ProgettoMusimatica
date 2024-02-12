@@ -7,7 +7,9 @@ import org.simpleyaml.configuration.file.YamlFile;
 
 import com.v1nc3nz0.musimathics.Musimathics;
 import com.v1nc3nz0.musimathics.configuration.enums.MFSettings;
+import com.v1nc3nz0.musimathics.enums.ScaleType;
 import com.v1nc3nz0.musimathics.musicfiles.enums.Alteration;
+import com.v1nc3nz0.musimathics.musicfiles.enums.NoteName;
 
 import lombok.Getter;
 
@@ -51,9 +53,17 @@ public class MusicFileSettings
 	/*
 	 * Ottieni la nota della scala
 	 */
-	public String getNoteScale()
+	public NoteName getNoteScale()
 	{
-		return config.getString(MFSettings.MUSIC_SCALE__NOTE.toString());
+		return NoteName.valueOf(config.getString(MFSettings.MUSIC_SCALE__NOTE.toString())+"1");
+	}
+	
+	/*
+	 * Ottieni il tipo di scala
+	 */
+	public ScaleType getScaleType()
+	{
+		return ScaleType.valueOf(config.getString(MFSettings.MUSIC_SCALE__TYPE.toString()));
 	}
 	
 	/*

@@ -5,7 +5,8 @@ public enum MFSettings
 	
 	MUSIC_BPM,
 	MUSIC_SCALE__NOTE,
-	MUSIC_SCALE__ALTERATION;
+	MUSIC_SCALE__ALTERATION,
+	MUSIC_SCALE__TYPE;
 	
 	@Override
 	public String toString()

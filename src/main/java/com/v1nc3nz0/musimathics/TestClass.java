@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import com.v1nc3nz0.musimathics.configuration.MusicFileSettings;
-import com.v1nc3nz0.musimathics.enums.Scale;
+import com.v1nc3nz0.musimathics.entity.Scale;
 import com.v1nc3nz0.musimathics.enums.ScaleIndex;
 import com.v1nc3nz0.musimathics.enums.ScaleType;
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
@@ -49,7 +49,7 @@ public class TestClass
 	{
 		MusicFile mf = new MusicFile("example.mf");
 		MusicFileSettings mfs = new MusicFileSettings("example.yml");
-		Scale scale = new Scale(new Note(NoteName.C1,Duration.Q,Alteration.NONE),ScaleType.MIN);
+		Scale scale = new Scale(new Note(mfs.getNoteScale(),Duration.Q,mfs.getNoteAlteration()),mfs.getScaleType());
 		MusicFileEntityList entities = MusicFile.obtainEntities(mf,scale);
 		
 		Part part = entities.composeMusicFrequency();
