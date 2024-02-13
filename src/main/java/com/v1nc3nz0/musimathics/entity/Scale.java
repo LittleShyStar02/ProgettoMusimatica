@@ -15,11 +15,11 @@ import lombok.Getter;
 public class Scale 
 {
 	
-	private Map<ScaleIndex,Alteration> alteration;
-	private Map<ScaleIndex,NoteName> newindex;
+	private Map<ScaleIndex,Alteration> alteration; // contiene le alterazioni della nota
+	private Map<ScaleIndex,NoteName> newindex; // contiene i nuovi valori della scala se trasposta
 	
 	@Getter
-	private Note note;
+	private Note note; // nota da cui la scala è partita
 	
 	@Getter
 	private ScaleType scaleType;
@@ -43,7 +43,7 @@ public class Scale
 				newindex.put(indexes[mod], note.getNoteName());
 			}
 		} catch (InvalidNoteException e) {
-			//messaggio di errore
+			e.printStackTrace();
 		}
 	}	
 	

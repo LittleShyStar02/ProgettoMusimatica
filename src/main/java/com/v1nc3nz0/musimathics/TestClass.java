@@ -48,7 +48,7 @@ public class TestClass
 	}
 	
 	
-	private static void testFileMF() throws InvalidNoteException, IOException
+	private static void testFileMF() throws InvalidNoteException, IOException, InvalidMusicFileException
 	{
 		MusicFile mf = new MusicFile("example.mf");
 		MusicFile mf2 = new MusicFile("newexample.mf");

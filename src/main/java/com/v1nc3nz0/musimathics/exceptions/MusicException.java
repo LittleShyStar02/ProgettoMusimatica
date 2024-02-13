@@ -16,4 +16,10 @@ public class MusicException extends Exception
 	
 	public String message;
 	
+	@Override
+	public void printStackTrace()
+	{
+		System.err.println(message);
+	}
+	
 }

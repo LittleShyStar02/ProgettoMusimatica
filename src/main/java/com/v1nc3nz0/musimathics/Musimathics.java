@@ -149,11 +149,13 @@ public class Musimathics
 		List<String> list = getMessages().getListMessage(Messages.MENU_CHOICE);
 		for(String str : list)
 		{
+			String replace;
 			for(Character ch : operations.keySet())
 			{
+				replace = String.valueOf(ch);
 				if(str.contains("{operation_"+String.valueOf(ch)+"}")) 
-					str = Placeholder.replace(MenuChoice.OPERATION_A.toString(), 
-							getMessages().getMessage(Messages.OPERATIONS__A_DESCRIPTION), str);
+					str = Placeholder.replace(MenuChoice.valueOf("OPERATION_"+replace).toString(), 
+							getMessages().getMessage(Messages.valueOf("OPERATIONS__"+replace+"_DESCRIPTION")), str);
 			}
 			System.out.println(str);
 		}

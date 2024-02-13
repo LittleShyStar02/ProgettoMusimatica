@@ -13,6 +13,7 @@ menu-choice:
   - "Benvenuto utente in questo software musicale"
   - ""
   - "'a' - {operation_a}"
+  - "'b' - {operation_b}"
   - "ESC - Esci dal programma"
   - ""
   - "Premi il tasto vicino le operazioni per eseguirle"
@@ -20,4 +21,5 @@ menu-choice:
 
 # Operations messages
 operations:
-  a-description: "Crea un file .mf"
+  a-description: "Creazione guidata di un brano"
+  b-description: "Importazione di un brano"

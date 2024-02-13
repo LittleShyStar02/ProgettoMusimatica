@@ -1,6 +1,6 @@
 package com.v1nc3nz0.musimathics.musicfiles.exceptions;
 
-import java.io.IOException;
+import com.v1nc3nz0.musimathics.exceptions.MusicException;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @SuppressWarnings("serial")
-public class MusicFileException extends IOException
+public class MusicFileException extends MusicException
 {
 	
 	String message;
