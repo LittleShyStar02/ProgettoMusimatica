@@ -4,22 +4,98 @@
 #                                                #
 ##################################################
 
-# Messaggio di scelta menù
+
+# Dati
+data:
+  file-settings: "File Settings"
+
+
+# Messaggi di errore del programma
 #
 # Placeholders
 #
-# {operation_a} -> indica l'operazione eseguita quando si clicca 'a'
-menu-choice:
-  - "Benvenuto utente in questo software musicale"
-  - ""
-  - "'a' - {operation_a}"
-  - "'b' - {operation_b}"
-  - "ESC - Esci dal programma"
-  - ""
-  - "Premi il tasto vicino le operazioni per eseguirle"
+# {data} -> indica il dato
+# {reason} -> indica il motivo dell'errore
+#
+error:
+  file-already-exists: "\nIl file {data} esiste già"
+  file-unknown: "\nFile non riconosciuto. Il file deve avere estensione .yml o .mf"
+  import: "\nErrore durante l'importazione del file"
+  input: "Errore durante l'inserimento di {data}: {reason}"
+  operation-canceled: "\nOperazione cancellata"
+
+
+# Inserimento del nome del file settings
+input: 
+  file-creations: "\nInserisci il nome dei file"
+  import: "\nSeleziona il file musicale o yaml con le impostazioni da importare"
+  file-settings: "Inserisci il nome del file settings"
 
 
 # Operations messages
 operations:
-  a-description: "Creazione guidata di un brano"
-  b-description: "Importazione di un brano"
+  #
+  # Messaggio di scelta menù
+  #
+  # Placeholders
+  #
+  # {operation_<value>} -> indica l'operazione eseguita quando si clicca '<value>'
+  menu-choice:
+   - " ------------------------------------------------------ "
+   - "|                                                      |"
+   - "|                Music File Software                   |"
+   - "|                                                      |"
+   - " ------------------------------------------------------ "
+   - " "
+   - "'a' - {operation_a}"
+   - "'b' - {operation_b}"
+   - "'c' - {operation_c}"
+   - "'d' - {operation_d}"
+   - "'e' - {operation_e}"
+   - "ESC - Esci dal programma"
+   - ""
+   - "Premi il tasto vicino le operazioni per eseguirle"
+  #
+  # Messaggi dell'operazione A
+  #
+  a:
+    description: "Creazione guidata di un brano"
+  #
+  # Messaggi dell'operazione B
+  #
+  b:
+    description: "Ottieni i file di esempio sia .mf che .yml"
+  #
+  # Messaggi dell'operazione C
+  #
+  c:
+    description: "Importazione di un brano"
+  #
+  # Messaggi dell'operazione D
+  #
+  d:
+    description: "Suona un file musicale"
+  #
+  # Messaggi dell'operazione E
+  #
+  e:
+    description: "Effettua la trasposizione del brano"
+
+
+# Messaggi di motivazione errore
+reason:
+  null-value: "Valore nullo o vuoto"
+
+
+# Messaggi di successo
+#
+# Placeholder
+#
+# {filename} -> nome del file
+# {musicfile} -> nome del file musicale
+# {musicfilesettings} -> nome del file settings
+#
+success:
+  file-copied: "I file di esempio example.yml e example.mf sono stati generati con successo"
+  import: "\n{filename} importato con successo"
+  music-files-created: "\nAbbiamo creato per te i file {musicfilesettings} e {musicfile}\n Ora puoi modificarli e ricordati di copiarli per non perderli"

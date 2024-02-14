@@ -17,17 +17,23 @@ import lombok.Getter;
 public class MessagesConfiguration implements Configuration
 {
 	
+	private Musimathics main; // main instance
+	
 	private YamlFile config; // file contenente i messaggi
 	
 	@Getter
 	private String fileName; // noem del file dei messaggi
 	
-	public MessagesConfiguration()
+	public MessagesConfiguration(Musimathics main)
 	{
 		fileName = "messages.yml";
+		this.main = main;
 		load();
 	}
 
+	/*
+	 * Carica la configurazione
+	 */
 	@Override
 	public void load() 
 	{
@@ -35,14 +41,14 @@ public class MessagesConfiguration implements Configuration
 		{
 			File file = new File(fileName);
 			if(!file.exists()) ConfigManager.saveDefaults(null, fileName);
-			config = new YamlFile();
+			config = new YamlFile(file);
 			config.loadWithComments();
-			Musimathics.getInstance().getLogger().logs("Configurazione messages.yml caricata con successo");
+			main.getLogger().logs("Configurazione messages.yml caricata con successo");
 		} 
 		catch (IOException e) 
 		{
 			e.printStackTrace();
-			Musimathics.getInstance().getLogger().error(e.getMessage());
+			main.getLogger().error(e.getMessage());
 		}
 	}
 	

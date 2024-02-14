@@ -37,7 +37,7 @@ public class TestClass
 	
 	public static void main(String[] args) throws InvalidMusicFileException, IOException, InterruptedException, MusicException
 	{	
-		trasposeFile();
+		
 	}
 	
 	

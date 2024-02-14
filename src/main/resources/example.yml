@@ -27,11 +27,8 @@ music-scale:
 # Indica qua le informazioni del brano musicale
 #
 # Assicurati di aver inserito i files nella cartella
-# chiamata "musicfiles". I le voci devono avere il nome
-# v<numero voce>_<nomefile>.mf . Esempio v0_ninnananna.mf
+# chiamata "musicfiles". I file delle voci devono avere il nome
+# v<numero voce>_<nomefile>.mf . Esempio v0_ninnananna.mf, v1_ninnananna.mf
 # Le voci partono da 0 e non da 1
 #
-music-files:
-    numero-voci: 1
-    voices:
-      v0: ninnananna.mf
+voice-numbers: 1

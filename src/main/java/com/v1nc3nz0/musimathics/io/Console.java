@@ -15,27 +15,38 @@ public class Console
 {
 	
 	private BufferedReader reader;
-	public static PrintStream CONSOLE_OUT;
-	public static PrintStream NO_OUT;
+	private Musimathics main;
 	
-	public Console()
+	public static PrintStream err;
+	public static PrintStream out;
+	public static PrintStream voiderror;
+	public static PrintStream voidout;
+	
+	public Console(Musimathics main)
 	{
 		reader = new BufferedReader(new InputStreamReader(System.in));
-		Console.NO_OUT = new PrintStream(new OutputStream() {
+		this.main = main;
+		
+		Console.voiderror =  new PrintStream(new OutputStream() {
 		    @Override
 		    public void write(int b) {}
 		});
-		Console.CONSOLE_OUT = System.out;
+		Console.voidout = new PrintStream(new OutputStream() {
+		    @Override
+		    public void write(int b) {}
+		});
+		Console.err = System.err;
+		Console.out = System.out;
 	}
 
 	public void clear() 
 	{
-		Musimathics.getInstance().getNative().system("cls");
+		main.getNativeC().system("cls");
 	}
 	
 	public void pause()
 	{
-		Musimathics.getInstance().getNative().system("pause");
+		main.getNativeC().system("pause");
 	}
 	
 	public byte readByte() throws NumberFormatException, IOException

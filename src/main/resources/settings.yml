@@ -9,9 +9,11 @@
 # File con estensione .mf
 music-files-location: "musicfiles"
 
+
 # Cartella dove si trovano i file di impostazioni
 # musicfiles. File con estensione .mfs
-music-files-location: "musicfilessettings"
+music-files-settings-location: "musicfilessettings"
+
 
 # Cartella dove si trovano i brani trasposti
 # Questa cartella contiene sia i .mf che i .yml

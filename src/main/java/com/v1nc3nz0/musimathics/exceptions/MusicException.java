@@ -1,25 +1,15 @@
 package com.v1nc3nz0.musimathics.exceptions;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
 /*
  * Eccezione generale della musica
  */
-@Getter
-@AllArgsConstructor
-@RequiredArgsConstructor
 @SuppressWarnings("serial")
-public class MusicException extends Exception
+public class MusicException extends AbstractException 
 {
 	
-	public String message;
-	
-	@Override
-	public void printStackTrace()
+	public MusicException(String message)
 	{
-		System.err.println(message);
+		super(message);
 	}
 	
 }

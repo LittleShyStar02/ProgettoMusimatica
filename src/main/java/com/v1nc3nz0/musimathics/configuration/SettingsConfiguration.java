@@ -12,15 +12,25 @@ import lombok.Getter;
 public class SettingsConfiguration implements Configuration
 {
 	
+	private Musimathics main; // main instance
 	private YamlFile config; // file contenente le impostazioni
 	
 	@Getter
-	private String fileName;
+	private String fileName; // nome del file
 	
-	public SettingsConfiguration()
+	public SettingsConfiguration(Musimathics main)
 	{
 		fileName = "settings.yml";
+		this.main = main;
 		load();
+	}
+	
+	/*
+	 * Ottieni la locazione dei file musicali
+	 */
+	public String getMusicFileLocation()
+	{
+		return config.getString("music-files-location");
 	}
 	
 	/*
@@ -33,11 +43,12 @@ public class SettingsConfiguration implements Configuration
 	}
 	
 	/*
-	 * Ottieni la locazione dei file musicali
+	 * Ottieni la locazione dei file
+	 * musicali trasposti
 	 */
-	public String getMusicFileLocation()
+	public String getMFTrasposedLocation()
 	{
-		return config.getString("music-files-location");
+		return config.getString("music-traspose-location");
 	}
 
 	@Override
@@ -47,14 +58,13 @@ public class SettingsConfiguration implements Configuration
 		{
 			File file = new File(fileName);
 			if(!file.exists()) ConfigManager.saveDefaults(null, fileName);
-			config = new YamlFile();
+			config = new YamlFile(file);
 			config.loadWithComments();
-			Musimathics.getInstance().getLogger().logs("Configurazione settings.yml caricata con successo");
+			main.getLogger().logs("Configurazione settings.yml caricata con successo");
 		} 
 		catch (IOException e) 
 		{
-			e.printStackTrace();
-			Musimathics.getInstance().getLogger().error(e.getMessage());
+			main.getLogger().error(e.getMessage());
 		}
 	}
 

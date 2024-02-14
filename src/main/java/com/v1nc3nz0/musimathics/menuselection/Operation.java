@@ -10,4 +10,5 @@ public interface Operation
 	 * Esegue le istruzioni dell'operazione
 	 */
 	public void run();
+	
 }

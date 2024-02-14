@@ -19,13 +19,15 @@ import lombok.Getter;
 public class MusicFileSettings 
 {
 	
-	private YamlFile config;
+	private Musimathics main; // main instance
+	private YamlFile config; // configuration
 	
 	@Getter
-	private String fileName;
+	private String fileName; // nome del file
 	
-	public MusicFileSettings(String name)
+	public MusicFileSettings(String name, Musimathics main)
 	{
+		this.main = main;
 		load(null,name);
 	}
 	
@@ -48,6 +50,14 @@ public class MusicFileSettings
 	public Alteration getNoteAlteration()
 	{
 		return Alteration.valueOf(config.getString(MFSettings.MUSIC_SCALE__ALTERATION.toString()));
+	}
+	
+	/*
+	 * Ottieni i nomi delle voci
+	 */
+	public int getVoices()
+	{
+		return config.getInt(MFSettings.VOICE_NUMBERS.toString());
 	}
 	
 	/*
@@ -80,9 +90,9 @@ public class MusicFileSettings
 			
 			config = new YamlFile(file);
 			config.loadWithComments();
-			Musimathics.getInstance().getLogger().append("File " + file.getPath().toString() + " caricato con successo");
+			main.getLogger().append("File " + file.getPath().toString() + " caricato con successo");
 		} catch (IOException e) {
-			Musimathics.getInstance().getLogger().error("Errore durante il caricamento del file " + file.getPath().toString());
+			main.getLogger().error("Errore durante il caricamento del file " + file.getPath().toString());
 		}
 	}
 	

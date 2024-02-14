@@ -13,8 +13,13 @@ import com.v1nc3nz0.musimathics.io.NativeC;
 import com.v1nc3nz0.musimathics.logger.Logger;
 import com.v1nc3nz0.musimathics.menuselection.Operation;
 import com.v1nc3nz0.musimathics.menuselection.OperationA;
+import com.v1nc3nz0.musimathics.menuselection.OperationB;
+import com.v1nc3nz0.musimathics.menuselection.OperationC;
+import com.v1nc3nz0.musimathics.menuselection.OperationD;
 import com.v1nc3nz0.musimathics.placeholders.Placeholder;
 import com.v1nc3nz0.musimathics.placeholders.enums.MenuChoice;
+
+import lombok.Getter;
 
 /*
  * Classe principale
@@ -24,17 +29,30 @@ public class Musimathics
 	
 	private final static int EXIT_CODE = 27; // codice del tasto ESC
 	
-	private static Musimathics instance; // istanza attuale
-	
 	private Map<Character, Operation> operations; // mappa delle associazioni delle operazioni
+	
+	@Getter
 	private File musicFileLocation; // cartella dei file musicali
+	
+	@Getter
 	private File mfSettingsLocation; // cartella delle impostazioni dei file musicali
 	
+	@Getter
+	private File mfTrasposedLocation; // cartella dei file trasposti
+	
+	@Getter
 	private SettingsConfiguration settings; // settings configuration
+	
+	@Getter
 	private MessagesConfiguration messages; // messages configuration
 	
+	@Getter
 	private Logger logger; // classe del logger
-	private NativeC nativec; // classe delle operazioni native c
+	
+	@Getter
+	private NativeC nativeC; // classe delle operazioni native c
+	
+	@Getter
 	private Console console; // classe delle operazioni su console
 	
 	public Musimathics()
@@ -50,28 +68,22 @@ public class Musimathics
 	private void initialize()
 	{
 		getLogger().logs("Inizializzazione dei dati");
-		Musimathics.instance = this;
 		operations = new HashMap<>();
 		
-		settings = new SettingsConfiguration();
-		messages = new MessagesConfiguration();
+		settings = new SettingsConfiguration(this);
+		messages = new MessagesConfiguration(this);
 		
 		musicFileLocation = new File(settings.getMusicFileLocation());
-		if(!musicFileLocation.exists()) 
-		{
-			musicFileLocation.mkdir();
-			logger.logs("Cartella dei file musicali non trovata. L'abbiamo creata noi per te!");
-		}
+		musicFileLocation.mkdirs();
 		
 		mfSettingsLocation = new File(settings.getMFSettingsLocation());
-		if(!mfSettingsLocation.exists())
-		{
-			mfSettingsLocation.mkdir();
-			logger.logs("Cartella delle impostazioni dei file musicali non trovata. L'abbiamo creata noi per te!");
-		}
+		mfSettingsLocation.mkdirs();
 		
-		nativec = new NativeC();
-		console = new Console();
+		mfTrasposedLocation = new File(settings.getMFTrasposedLocation());
+		mfTrasposedLocation.mkdirs();
+		
+		nativeC = new NativeC();
+		console = new Console(this);
 		getLogger().logs("Inizializzazione dati completata con successo");
 	}
 	
@@ -81,64 +93,11 @@ public class Musimathics
 	private void initializeOperations()
 	{
 		getLogger().logs("Inizializzazione operazioni menù scelta");
-		operations.put('a', new OperationA());
+		operations.put('a', new OperationA(this));
+		operations.put('b', new OperationB(this));
+		operations.put('c', new OperationC(this));
+		operations.put('d', new OperationD(this));
 		getLogger().logs("Operazioni del menù di selezione inizializzate con successo");
-	}
-	
-	/*
-	 * Ottieni l'istanza
-	 */
-	public static Musimathics getInstance()
-	{
-		return Musimathics.instance;
-	}
-	
-	/*
-	 * Ottieni l'istanza Console
-	 */
-	public Console getConsole()
-	{
-		return console;
-	}
-	
-	/*
-	 * Ottieni i messaggi del programma
-	 */
-	public MessagesConfiguration getMessages()
-	{
-		return messages;
-	}
-	
-	/*
-	 * Ottieni la cartella dei file musicali
-	 */
-	public File getMusicFileLocation()
-	{
-		return musicFileLocation;
-	}
-	
-	/*
-	 * Ottieni il logger
-	 */
-	public Logger getLogger()
-	{
-		return logger;
-	}
-	
-	/*
-	 * Ottieni l'istanza native c
-	 */
-	public NativeC getNative()
-	{
-		return nativec;
-	}
-	
-	/*
-	 * Ottieni le impostazioni del programma
-	 */
-	public SettingsConfiguration getSettings()
-	{
-		return settings;
 	}
 	
 	/*
@@ -146,18 +105,18 @@ public class Musimathics
 	 */
 	private void menuChoice()
 	{
-		List<String> list = getMessages().getListMessage(Messages.MENU_CHOICE);
+		List<String> list = getMessages().getListMessage(Messages.OPERATIONS__MENU_CHOICE);
 		for(String str : list)
 		{
 			String replace;
 			for(Character ch : operations.keySet())
 			{
 				replace = String.valueOf(ch);
-				if(str.contains("{operation_"+String.valueOf(ch)+"}")) 
-					str = Placeholder.replace(MenuChoice.valueOf("OPERATION_"+replace).toString(), 
-							getMessages().getMessage(Messages.valueOf("OPERATIONS__"+replace+"_DESCRIPTION")), str);
+				if(str.contains("{operation_"+replace+"}")) 
+					str = Placeholder.replace(MenuChoice.valueOf("OPERATION_"+replace.toUpperCase()).toString(), 
+							getMessages().getMessage(Messages.valueOf("OPERATIONS__"+replace.toUpperCase()+"__DESCRIPTION")),str);
 			}
-			System.out.println(str);
+			Console.out.println(str);
 		}
 	}
 	
@@ -175,7 +134,7 @@ public class Musimathics
 		{
 			getConsole().clear();
 			menuChoice();
-			choice = getNative().getch();
+			choice = getNativeC().getch();
 			if(choice != Musimathics.EXIT_CODE)
 			{
 				selection = (char) choice;
