@@ -19,6 +19,7 @@ data:
 #
 error:
   file-already-exists: "\nIl file {data} esiste già"
+  file-loading: "Errore durante il caricamento del file {data}"
   file-unknown: "\nFile non riconosciuto. Il file deve avere estensione .yml o .mf"
   import: "\nErrore durante l'importazione del file"
   input: "Errore durante l'inserimento di {data}: {reason}"
@@ -30,6 +31,7 @@ input:
   file-creations: "\nInserisci il nome dei file"
   import: "\nSeleziona il file musicale o yaml con le impostazioni da importare"
   file-settings: "Inserisci il nome del file settings"
+  new-file-settings: "Inserisci il nome del file settings con le nuove impostazioni del brano"
 
 
 # Operations messages
@@ -52,7 +54,7 @@ operations:
    - "'c' - {operation_c}"
    - "'d' - {operation_d}"
    - "'e' - {operation_e}"
-   - "ESC - Esci dal programma"
+   - "\nESC - Esci dal programma"
    - ""
    - "Premi il tasto vicino le operazioni per eseguirle"
   #
@@ -79,7 +81,7 @@ operations:
   # Messaggi dell'operazione E
   #
   e:
-    description: "Effettua la trasposizione del brano"
+    description: "Effettua la trasposizione di un brano"
 
 
 # Messaggi di motivazione errore
@@ -97,5 +99,6 @@ reason:
 #
 success:
   file-copied: "I file di esempio example.yml e example.mf sono stati generati con successo"
+  file-trasposed: "\nBrano trasposto correttamente"
   import: "\n{filename} importato con successo"
   music-files-created: "\nAbbiamo creato per te i file {musicfilesettings} e {musicfile}\n Ora puoi modificarli e ricordati di copiarli per non perderli"

@@ -40,6 +40,7 @@ public class MusicFileWriter extends BufferedWriter
 			else append(ent.toString());
 			newLine();
 		}
+		flush();
 	}
 
 }

@@ -6,6 +6,9 @@ import java.io.IOException;
 import org.simpleyaml.configuration.file.YamlFile;
 
 import com.v1nc3nz0.musimathics.Musimathics;
+import com.v1nc3nz0.musimathics.configuration.enums.Messages;
+import com.v1nc3nz0.musimathics.io.Console;
+import com.v1nc3nz0.musimathics.placeholders.Placeholder;
 
 import lombok.Getter;
 
@@ -54,9 +57,9 @@ public class SettingsConfiguration implements Configuration
 	@Override
 	public void load() 
 	{
+		File file = new File(fileName);
 		try 
 		{
-			File file = new File(fileName);
 			if(!file.exists()) ConfigManager.saveDefaults(null, fileName);
 			config = new YamlFile(file);
 			config.loadWithComments();
@@ -64,7 +67,10 @@ public class SettingsConfiguration implements Configuration
 		} 
 		catch (IOException e) 
 		{
-			main.getLogger().error(e.getMessage());
+			String message = main.getMessages().getMessage(Messages.ERROR__FILE_LOADING);
+			message = Placeholder.replace("{data}",file.getPath().toString(), message);
+			Console.out.println();
+			main.getLogger().error(message);
 		}
 	}
 

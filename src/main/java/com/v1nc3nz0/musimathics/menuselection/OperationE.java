@@ -7,6 +7,7 @@ import com.v1nc3nz0.musimathics.configuration.MusicFileSettings;
 import com.v1nc3nz0.musimathics.configuration.enums.Messages;
 import com.v1nc3nz0.musimathics.entity.Scale;
 import com.v1nc3nz0.musimathics.exceptions.InvalidNoteException;
+import com.v1nc3nz0.musimathics.exceptions.MusicException;
 import com.v1nc3nz0.musimathics.graphics.Popup;
 import com.v1nc3nz0.musimathics.io.Console;
 import com.v1nc3nz0.musimathics.musicfiles.entity.MusicFileEntityList;
@@ -14,17 +15,16 @@ import com.v1nc3nz0.musimathics.musicfiles.entity.Note;
 import com.v1nc3nz0.musimathics.musicfiles.enums.Duration;
 import com.v1nc3nz0.musimathics.musicfiles.exceptions.InvalidMusicFileException;
 import com.v1nc3nz0.musimathics.musicfiles.io.MusicFile;
+import com.v1nc3nz0.musimathics.musicfiles.io.MusicFileWriter;
+import com.v1nc3nz0.musimathics.musicfiles.io.MusicWriter;
 import com.v1nc3nz0.musimathics.placeholders.Placeholder;
 
-import jm.music.data.Score;
-import jm.util.Play;
-
-public class OperationD implements Operation 
+public class OperationE implements Operation 
 {
 	
 private Musimathics main;
 	
-	public OperationD(Musimathics main)
+	public OperationE(Musimathics main)
 	{
 		this.main = main;
 	}
@@ -34,10 +34,11 @@ private Musimathics main;
 	{
 		boolean finish = true;
 		String message = null;
-		MusicFileEntityList list;
-		MusicFile music;
-		String name;
-		Score score;
+		
+		MusicFileEntityList list,list2;
+		MusicFileWriter writer;
+		MusicFile music,music2;
+		String name,name2;
 		int voices;
 		
 		do
@@ -67,13 +68,37 @@ private Musimathics main;
 					continue;
 				}
 				
-				MusicFileSettings settings = new MusicFileSettings(main.getMfSettingsLocation(),name+".yml",main);
-				Scale scale = new Scale(new Note(settings.getNoteScale(),Duration.Q,settings.getNoteAlteration()),
-						settings.getScaleType());
+				name2 = Popup.showInput(main.getMessages().getMessage(Messages.INPUT__NEW_FILE_SETTINGS));
+				if(name2 == null || name.isEmpty())
+				{
+					message = main.getMessages().getMessage(Messages.ERROR__INPUT);
+					message = Placeholder.replace("{data}", main.getMessages().getMessage(Messages.DATA__FILE_SETTINGS), message);
+					message = Placeholder.replace("{reason}", main.getMessages().getMessage(Messages.REASON__NULL_VALUE), message);
+					continue;
+				}
 				
-				voices = settings.getVoices();
-				score = new Score();
-				score.setTempo(settings.getBPM());
+				MusicFileSettings oldsettings = new MusicFileSettings(main.getMfSettingsLocation(),name+".yml",main);
+				MusicFileSettings newsettings = new MusicFileSettings(main.getMfSettingsLocation(),name2+".yml",main);
+				
+				Scale oldscale = new Scale(
+						new Note(
+								oldsettings.getNoteScale(),
+								Duration.Q,
+								oldsettings.getNoteAlteration()
+						),
+						oldsettings.getScaleType()
+				);
+				
+				Scale newscale = new Scale(
+						new Note(
+								newsettings.getNoteScale(),
+								Duration.Q,
+								newsettings.getNoteAlteration()
+						),
+						newsettings.getScaleType()
+				);
+				
+				voices = oldsettings.getVoices();
 				
 				for(int x = 0;x < voices;x++)
 				{
@@ -82,11 +107,21 @@ private Musimathics main;
 					{
 						throw new InvalidMusicFileException("\nFile "+"v"+String.valueOf(x)+"_"+name+".mf"+" inesistente");
 					}
-					list = MusicFile.obtainEntities(music, scale);
-					score.add(list.composeMusicFrequency());
+					
+					music2 = new MusicFile(main.getMfTrasposedLocation(),"v"+String.valueOf(x)+"_"+name+".mf");
+					if(!music2.exists())
+					{
+						music2.createNewFile();
+					}
+					
+					writer = new MusicFileWriter(new MusicWriter(music2));
+					list = MusicFile.obtainEntities(music, oldscale);
+					list2 = list.traspose(oldscale, newscale);
+					writer.save(list2, false);
+					writer.close();
 				}
 				
-				Play.midi(score);
+				Console.out.println(main.getMessages().getMessage(Messages.SUCCESS_FILE_TRASPOSED));
 				finish = false;
 				
 			}
@@ -101,6 +136,9 @@ private Musimathics main;
 			catch (IOException e) 
 			{
 				Console.out.println("Errore durante l'utilizzo del file musicale");
+			} 
+			catch (MusicException e) {
+				e.printStackTrace();
 			}
 			
 			Console.out.println();

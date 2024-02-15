@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.v1nc3nz0.musimathics.configuration.MessagesConfiguration;
 import com.v1nc3nz0.musimathics.configuration.SettingsConfiguration;
 import com.v1nc3nz0.musimathics.configuration.enums.Messages;
@@ -16,6 +17,7 @@ import com.v1nc3nz0.musimathics.menuselection.OperationA;
 import com.v1nc3nz0.musimathics.menuselection.OperationB;
 import com.v1nc3nz0.musimathics.menuselection.OperationC;
 import com.v1nc3nz0.musimathics.menuselection.OperationD;
+import com.v1nc3nz0.musimathics.menuselection.OperationE;
 import com.v1nc3nz0.musimathics.placeholders.Placeholder;
 import com.v1nc3nz0.musimathics.placeholders.enums.MenuChoice;
 
@@ -97,6 +99,7 @@ public class Musimathics
 		operations.put('b', new OperationB(this));
 		operations.put('c', new OperationC(this));
 		operations.put('d', new OperationD(this));
+		operations.put('e', new OperationE(this));
 		getLogger().logs("Operazioni del menù di selezione inizializzate con successo");
 	}
 	

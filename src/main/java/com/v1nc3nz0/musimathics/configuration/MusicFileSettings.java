@@ -7,9 +7,12 @@ import org.simpleyaml.configuration.file.YamlFile;
 
 import com.v1nc3nz0.musimathics.Musimathics;
 import com.v1nc3nz0.musimathics.configuration.enums.MFSettings;
+import com.v1nc3nz0.musimathics.configuration.enums.Messages;
 import com.v1nc3nz0.musimathics.enums.ScaleType;
+import com.v1nc3nz0.musimathics.io.Console;
 import com.v1nc3nz0.musimathics.musicfiles.enums.Alteration;
 import com.v1nc3nz0.musimathics.musicfiles.enums.NoteName;
+import com.v1nc3nz0.musimathics.placeholders.Placeholder;
 
 import lombok.Getter;
 
@@ -31,8 +34,9 @@ public class MusicFileSettings
 		load(null,name);
 	}
 	
-	public MusicFileSettings(File dir,String name)
+	public MusicFileSettings(File dir, String name, Musimathics main)
 	{
+		this.main = main;
 		load(dir,name);
 	}
 	
@@ -92,7 +96,10 @@ public class MusicFileSettings
 			config.loadWithComments();
 			main.getLogger().append("File " + file.getPath().toString() + " caricato con successo");
 		} catch (IOException e) {
-			main.getLogger().error("Errore durante il caricamento del file " + file.getPath().toString());
+			String message = main.getMessages().getMessage(Messages.ERROR__FILE_LOADING);
+			message = Placeholder.replace("{data}",file.getPath().toString(), message);
+			Console.out.println();
+			main.getLogger().error(message);
 		}
 	}
 	

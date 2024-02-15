@@ -144,9 +144,10 @@ public class MusicFileEntityList extends ArrayList<MusicFileEntity>
 			}
 		}catch(InvalidNoteException e)
 		{
-			// errore qui
+			e.printStackTrace();
 		}
 		
 		return ents;
 	}
+	
 }

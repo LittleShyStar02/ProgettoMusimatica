@@ -45,7 +45,8 @@ public class ConfigManager
 			
 			zipfile.close();
 			
-		} catch (IOException e) {
+		} catch (IOException e) 
+		{
 			e.printStackTrace();
 		}
 	}
