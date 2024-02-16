@@ -12,12 +12,12 @@ import com.v1nc3nz0.musimathics.configuration.enums.Messages;
 import com.v1nc3nz0.musimathics.io.Console;
 import com.v1nc3nz0.musimathics.io.NativeC;
 import com.v1nc3nz0.musimathics.logger.Logger;
-import com.v1nc3nz0.musimathics.menuselection.Operation;
-import com.v1nc3nz0.musimathics.menuselection.OperationA;
-import com.v1nc3nz0.musimathics.menuselection.OperationB;
-import com.v1nc3nz0.musimathics.menuselection.OperationC;
-import com.v1nc3nz0.musimathics.menuselection.OperationD;
-import com.v1nc3nz0.musimathics.menuselection.OperationE;
+import com.v1nc3nz0.musimathics.operations.Operation;
+import com.v1nc3nz0.musimathics.operations.OperationA;
+import com.v1nc3nz0.musimathics.operations.OperationB;
+import com.v1nc3nz0.musimathics.operations.OperationC;
+import com.v1nc3nz0.musimathics.operations.OperationD;
+import com.v1nc3nz0.musimathics.operations.OperationE;
 import com.v1nc3nz0.musimathics.placeholders.Placeholder;
 import com.v1nc3nz0.musimathics.placeholders.enums.MenuChoice;
 

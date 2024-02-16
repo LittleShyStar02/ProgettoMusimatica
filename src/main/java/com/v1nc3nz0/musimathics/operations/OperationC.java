@@ -1,4 +1,4 @@
-package com.v1nc3nz0.musimathics.menuselection;
+package com.v1nc3nz0.musimathics.operations;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,17 +35,24 @@ public class OperationC implements Operation
 			Console.out.println(" ---------------------------------------");
 			Console.out.println("\nCaricamento in corso...");
 			
-			FileNameExtensionFilter filter = new FileNameExtensionFilter("Music Files", "mf", "yml");
+			main.getLogger().logs(" ---------------------------------------");
+			main.getLogger().logs("|                                       |");
+			main.getLogger().logs("|             Operazione C              |");
+			main.getLogger().logs("|                                       |");
+			main.getLogger().logs(" ---------------------------------------");
+			main.getLogger().logs("\nCaricamento in corso...");
+			
 			JFileChooser chooser = new JFileChooser();
 			File source,target=null;
 			
 			chooser.setCurrentDirectory(main.getMfTrasposedLocation());
-			chooser.setFileFilter(filter);
+			chooser.setFileFilter(new FileNameExtensionFilter("Music Files", "mf", "yml"));
 			
 			Console.out.println(main.getMessages().getMessage(Messages.INPUT__IMPORT));
 			if(chooser.showOpenDialog(null) != JFileChooser.APPROVE_OPTION)
 			{
 				Console.out.println(main.getMessages().getMessage(Messages.ERROR__OPERATION_CANCELED));
+				main.getLogger().warn(main.getMessages().getMessage(Messages.ERROR__OPERATION_CANCELED));
 			}
 			else
 			{
@@ -61,15 +68,19 @@ public class OperationC implements Operation
 				String outmessage = main.getMessages().getMessage(Messages.SUCCESS__IMPORT);
 				outmessage = Placeholder.replace("{filename}", target.getName(), outmessage);
 				Console.out.println(outmessage);
+				main.getLogger().logs(outmessage);
 			}
 			
 		}
 		catch (IOException e) 
 		{
 			Console.out.println(main.getMessages().getMessage(Messages.ERROR__IMPORT));
-		} catch (InvalidMusicFileException e) 
+			main.getLogger().error(main.getMessages().getMessage(Messages.ERROR__IMPORT));
+		} 
+		catch (InvalidMusicFileException e) 
 		{
 			Console.out.println(e.getMessage());
+			main.getLogger().error(e.getMessage());
 		}
 		
 		Console.out.println();

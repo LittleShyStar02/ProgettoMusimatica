@@ -17,9 +17,7 @@ public class Console
 	private BufferedReader reader;
 	private Musimathics main;
 	
-	public static PrintStream err;
 	public static PrintStream out;
-	public static PrintStream voiderror;
 	public static PrintStream voidout;
 	
 	public Console(Musimathics main)
@@ -27,15 +25,10 @@ public class Console
 		reader = new BufferedReader(new InputStreamReader(System.in));
 		this.main = main;
 		
-		Console.voiderror =  new PrintStream(new OutputStream() {
-		    @Override
-		    public void write(int b) {}
-		});
 		Console.voidout = new PrintStream(new OutputStream() {
 		    @Override
 		    public void write(int b) {}
 		});
-		Console.err = System.err;
 		Console.out = System.out;
 	}
 

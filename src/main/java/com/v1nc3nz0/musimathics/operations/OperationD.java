@@ -1,4 +1,4 @@
-package com.v1nc3nz0.musimathics.menuselection;
+package com.v1nc3nz0.musimathics.operations;
 
 import java.io.IOException;
 
@@ -86,7 +86,11 @@ private Musimathics main;
 					score.add(list.composeMusicFrequency());
 				}
 				
+				// messaggio inizio
+				System.setOut(Console.voidout);
 				Play.midi(score);
+				System.setOut(Console.out);
+				//messaggio fine
 				finish = false;
 				
 			}

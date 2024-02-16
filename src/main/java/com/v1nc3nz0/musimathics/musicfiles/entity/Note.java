@@ -20,7 +20,7 @@ public class Note implements MusicFileEntity
 	
 	private Alteration alteration;
 	
-	private Duration duration;
+	private Duration duration; // gestire il .
 	
 	private ScaleIndex index;
 	
@@ -74,8 +74,6 @@ public class Note implements MusicFileEntity
 			
 			this.noteName = NoteName.valueOf(ScaleIndex.getIndex(index).name()+chromaticScale);
 			this.alteration = Alteration.NONE;
-			
-			//System.out.println(semitone+3 + " " + difference + " " + scaletone);
 			
 			if(difference == 1)
 			{

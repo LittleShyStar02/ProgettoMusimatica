@@ -1,4 +1,4 @@
-package com.v1nc3nz0.musimathics.menuselection;
+package com.v1nc3nz0.musimathics.operations;
 
 import java.io.File;
 
@@ -28,12 +28,19 @@ public class OperationB implements Operation
 		Console.out.println(" ---------------------------------------");
 		Console.out.println("\n");
 		
+		main.getLogger().logs(" ---------------------------------------");
+		main.getLogger().logs("|                                       |");
+		main.getLogger().logs("|             Operazione B              |");
+		main.getLogger().logs("|                                       |");
+		main.getLogger().logs(" ---------------------------------------");
+		
 		File file = new File("example.yml");
 		if(!file.exists()) ConfigManager.saveDefaults(null, "example.yml");
 		file = new File("example.mf");
 		if(!file.exists()) ConfigManager.saveDefaults(null, "example.mf");
 		
 		Console.out.println(main.getMessages().getMessage(Messages.SUCCESS__FILE_COPIED));
+		main.getLogger().logs(main.getMessages().getMessage(Messages.SUCCESS__FILE_COPIED));
 		
 		Console.out.println();
 		main.getConsole().pause();

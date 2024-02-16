@@ -27,7 +27,7 @@ public class Logger
 			latestLogs.createNewFile();
 			writer = new BufferedWriter(new FileWriter(latestLogs,true));
 		} catch (IOException e) {
-			Console.err.println("Errore durante l'inizializzazione del logger");
+			Console.out.println("Errore durante l'inizializzazione del logger");
 		}
 		
 	}

@@ -1,4 +1,4 @@
-package com.v1nc3nz0.musimathics.menuselection;
+package com.v1nc3nz0.musimathics.operations;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,9 +41,17 @@ public class OperationA implements Operation
 				Console.out.println(" ---------------------------------------");
 				Console.out.println("\n");
 				
+				main.getLogger().logs(" ---------------------------------------");
+				main.getLogger().logs("|                                       |");
+				main.getLogger().logs("|             Operazione A              |");
+				main.getLogger().logs("|                                       |");
+				main.getLogger().logs(" ---------------------------------------");
+				
+				
 				if(message != null)
 				{
 					Console.out.println(message);
+					main.getLogger().error(message);
 					message = null;
 				}
 				
@@ -65,8 +73,8 @@ public class OperationA implements Operation
 				}
 				else
 				{
-					ConfigManager.saveDefaults(null, "example.yml");
 					source = new File("example.yml");
+					if(!source.exists()) ConfigManager.saveDefaults(null, source.getName());
 					Files.copy(source.toPath(), target.toPath());
 					source.delete();
 					
@@ -80,8 +88,8 @@ public class OperationA implements Operation
 					}
 					else
 					{
-						ConfigManager.saveDefaults(null, "example.mf");
 						source = new File("example.mf");
+						if(!source.exists()) ConfigManager.saveDefaults(null, source.getName());
 						Files.copy(source.toPath(), target2.toPath());
 						source.delete();
 						
@@ -89,6 +97,7 @@ public class OperationA implements Operation
 						outmessage = Placeholder.replace("{musicfile}", name+".mf",outmessage);
 						outmessage = Placeholder.replace("{musicfilesettings}", name+".yml",outmessage);
 						Console.out.println(outmessage);
+						main.getLogger().logs(outmessage);
 						
 						finish = false;
 						

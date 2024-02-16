@@ -9,8 +9,11 @@
   <description>Software creato per l'esame di musimatica</description>
   
   <properties>
+	  <!-- default property -->
 	  <java.version>17</java.version>
 	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	  <!-- custom property -->
+	  <projectName>${project.name}</projectName>
   </properties>
   
   <repositories>

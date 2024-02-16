@@ -1,4 +1,4 @@
-package com.v1nc3nz0.musimathics.menuselection;
+package com.v1nc3nz0.musimathics.operations;
 
 /*
  * Interfaccia che rappresenta un operazione

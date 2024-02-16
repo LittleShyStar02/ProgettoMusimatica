@@ -1,4 +1,4 @@
-package com.v1nc3nz0.musimathics.menuselection;
+package com.v1nc3nz0.musimathics.operations;
 
 import java.io.IOException;
 
@@ -46,7 +46,7 @@ private Musimathics main;
 			main.getConsole().clear();
 			Console.out.println(" ---------------------------------------");
 			Console.out.println("|                                       |");
-			Console.out.println("|             Operazione D              |");
+			Console.out.println("|             Operazione E              |");
 			Console.out.println("|                                       |");
 			Console.out.println(" ---------------------------------------");
 			
@@ -121,7 +121,7 @@ private Musimathics main;
 					writer.close();
 				}
 				
-				Console.out.println(main.getMessages().getMessage(Messages.SUCCESS_FILE_TRASPOSED));
+				Console.out.println(main.getMessages().getMessage(Messages.SUCCESS__FILE_TRASPOSED));
 				finish = false;
 				
 			}
