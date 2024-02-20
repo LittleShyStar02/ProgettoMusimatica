@@ -11,10 +11,12 @@ public enum Duration
 	W(4.0),H(2.0),Q(1.0),I(0.5),S(0.25),T(0.125),X(0.0625),O(0.03125);
 	
 	private double jmusic_value;
+	private boolean pointed;
 	
 	Duration(double jmusic_value)
 	{
 		this.jmusic_value = jmusic_value;
+		pointed = false;
 	}
 	
 	/*
@@ -43,6 +45,11 @@ public enum Duration
 		}
 	}
 	
+	public void setPointed(boolean p)
+	{
+		pointed = p;
+	}
+	
 	/*
 	 * Ottieni la durata
 	 */
@@ -56,6 +63,10 @@ public enum Duration
 	 */
 	public double obtainMusic()
 	{
+		if(pointed)
+		{
+			return jmusic_value + (jmusic_value/2);
+		}
 		return jmusic_value;
 	}
 

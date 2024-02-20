@@ -36,7 +36,12 @@ public class MusicFileParser
 					+String.valueOf(name.name().charAt(name.name().length()-1)));
 		}
 		
-		dur = Duration.getDuration(values[1].toUpperCase());
+		dur = Duration.getDuration(String.valueOf(values[1].charAt(0)).toUpperCase());
+		if(values[1].toCharArray().length == 2)
+		{
+			dur.setPointed(true);
+		}
+		
 		altscale = scale.getAlteration(index);
 		
 		if(values.length == 3) 
@@ -76,7 +81,11 @@ public class MusicFileParser
 	 */
 	public Pause toPause(String pause) throws InvalidNoteException
 	{
-		Duration dur = Duration.getDuration(pause.toUpperCase());
+		Duration dur = Duration.getDuration(String.valueOf(pause.charAt(0)).toUpperCase());
+		if(pause.toCharArray().length == 2)
+		{
+			dur.setPointed(true);
+		}
 		return new Pause(dur);
 	}
 
