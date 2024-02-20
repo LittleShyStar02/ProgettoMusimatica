@@ -7,12 +7,12 @@ public class Popup
 	
 	public static void showSuccess(String message)
 	{
-		JOptionPane.showConfirmDialog(null, message,"${projectName}",JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showConfirmDialog(null, message,"ProgettoMusimatica",JOptionPane.PLAIN_MESSAGE);
 	}
 	
 	public static String showInput(String message)
 	{
-		return JOptionPane.showInputDialog(null,message,"${projectName}",JOptionPane.PLAIN_MESSAGE);
+		return JOptionPane.showInputDialog(null,message,"ProgettoMusimatica",JOptionPane.PLAIN_MESSAGE);
 	}
 
 }

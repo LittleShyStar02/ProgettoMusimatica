@@ -67,32 +67,35 @@ private Musimathics main;
 					continue;
 				}
 				
-				MusicFileSettings settings = new MusicFileSettings(main.getMfSettingsLocation(),name+".yml",main);
-				Scale scale = new Scale(new Note(settings.getNoteScale(),Duration.Q,settings.getNoteAlteration()),
-						settings.getScaleType());
-				
-				voices = settings.getVoices();
-				score = new Score();
-				score.setTempo(settings.getBPM());
-				
-				for(int x = 0;x < voices;x++)
+				if(!name.equals("EXIT"))
 				{
-					music = new MusicFile(main.getMusicFileLocation(),"v"+String.valueOf(x)+"_"+name+".mf");
-					if(!music.exists())
+					MusicFileSettings settings = new MusicFileSettings(main.getMfSettingsLocation(),name+".yml",main);
+					Scale scale = new Scale(new Note(settings.getNoteScale(),Duration.Q,settings.getNoteAlteration()),
+							settings.getScaleType());
+					
+					voices = settings.getVoices();
+					score = new Score();
+					score.setTempo(settings.getBPM());
+					
+					for(int x = 0;x < voices;x++)
 					{
-						throw new InvalidMusicFileException("\nFile "+"v"+String.valueOf(x)+"_"+name+".mf"+" inesistente");
+						music = new MusicFile(main.getMusicFileLocation(),"v"+String.valueOf(x)+"_"+name+".mf");
+						if(!music.exists())
+						{
+							throw new InvalidMusicFileException("\nFile "+"v"+String.valueOf(x)+"_"+name+".mf"+" inesistente");
+						}
+						list = MusicFile.obtainEntities(music, scale);
+						score.add(list.composeMusicFrequency());
 					}
-					list = MusicFile.obtainEntities(music, scale);
-					score.add(list.composeMusicFrequency());
+					
+					// messaggio inizio
+					System.setOut(Console.voidout);
+					Play.midi(score);
+					System.setOut(Console.out);
+					//messaggio fine
+					finish = false;
 				}
-				
-				// messaggio inizio
-				System.setOut(Console.voidout);
-				Play.midi(score);
-				System.setOut(Console.out);
-				//messaggio fine
-				finish = false;
-				
+
 			}
 			catch (InvalidMusicFileException e) 
 			{

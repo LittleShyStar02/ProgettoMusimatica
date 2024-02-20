@@ -19,9 +19,9 @@ music-bpm: 120
 # LE ALTERAZIONI DELLA SCALA
 #
 music-scale:
-  note: G
+  note: C
   alteration: NONE
-  type: MAJ
+  type: MIN
 
 
 # Indica qua le informazioni del brano musicale

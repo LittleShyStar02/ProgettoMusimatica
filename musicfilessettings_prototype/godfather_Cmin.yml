@@ -6,7 +6,7 @@
 
 
 # Questo valore indica i BPM del brano
-music-bpm: 120
+music-bpm: 80
 
 
 # Inserisci la scala del brano
@@ -14,6 +14,9 @@ music-bpm: 120
 # Note: C, D, E, F, G, A, B
 # Alteration NONE (naturale), #, b
 # Type: MAJ (major) ,MIN (minor)
+#
+# NON MODIFICARE SE GESTISCI MANUALMENTE
+# LE ALTERAZIONI DELLA SCALA
 #
 music-scale:
   note: C
@@ -24,11 +27,8 @@ music-scale:
 # Indica qua le informazioni del brano musicale
 #
 # Assicurati di aver inserito i files nella cartella
-# chiamata "musicfiles". I le voci devono avere il nome
-# v<numero voce>_<nomefile>.mf . Esempio v0_ninnananna.mf
+# chiamata "musicfiles". I file delle voci devono avere il nome
+# v<numero voce>_<nomefile>.mf . Esempio v0_ninnananna.mf, v1_ninnananna.mf
 # Le voci partono da 0 e non da 1
 #
-music-files:
-    numero-voci: 1
-    voices:
-      v0: ninnananna.mf
+voice-numbers: 2

@@ -1,0 +1,2 @@
+PAUSE w
+BAR
